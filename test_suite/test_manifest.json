@@ -1,0 +1,122 @@
+[
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-001A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-XX-A000-00-00-0000-00A-001A-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "BRDP-AH-34203JP"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-002A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-002B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "BRDP-AH-42038JP"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-003A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-003B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "BRDP-AH-42039JP"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-004A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-004B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "BRDP-AH-85001JP"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-005A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-005B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "BRDP-AH-99043JP"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-006A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-006B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "dm-integrity"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-007A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-007B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "content-quality"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-008A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-008B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "content-quality"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-009A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-009B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "content-quality"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-010A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-010B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "complexity"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-011A-D_001-00_en-US.xml",
+        "expected_status": "valid",
+        "rule_id": null
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-011B-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "RULE-TOP-01"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-011C-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "RULE-MID-01"
+    },
+    {
+        "filename": "DMC-JP-A000-00-00-0000-00A-011D-D_001-00_en-US.xml",
+        "expected_status": "invalid",
+        "rule_id": "RULE-BASE-01"
+    }
+]

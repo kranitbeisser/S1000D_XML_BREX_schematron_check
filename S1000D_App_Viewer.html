@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1000D Analyst Workspace - v8.9.0 (Clean & Functional)</title>
+    <!-- sql.js - Portable SQLite Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CORE DESIGN SYSTEM: v8.9.0 (Professional Minimalism) --- */
+        :root {
+            /* Midnight Blue Accents (Default) */
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-sidebar: #ffffff;
+            --bg-header: rgba(255, 255, 255, 0.9);
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --accent: #1e293b; 
+            --accent-hover: #334155; 
+            --accent-light: #f1f5f9;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --danger: #ef4444; --success: #10b981; --warning: #f59e0b; --info: #0ea5e9;
+        }
+
+        [data-theme="medium"] {
+            --bg-body: #334155;
+            --bg-card: #475569;
+            --bg-sidebar: #334155;
+            --bg-header: rgba(51, 65, 85, 0.95);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --border: #64748b;
+            --border-light: #4b5563;
+            --accent: #1e293b; --accent-hover: #0f172a; --accent-light: #3d4957;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #020617;
+            --bg-card: #111827;
+            --bg-sidebar: #0f172a;
+            --bg-header: rgba(15, 23, 42, 0.95);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --border-light: #1e293b;
+            --accent: #38bdf8; --accent-hover: #7dd3fc; --accent-light: #1e293b;
+        }
+
+        * { box-sizing: border-box; transition: background-color 0.2s, color 0.1s; }
+        body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-body); color: var(--text-primary); 
+               height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+
+        /* --- HEADER & TOP KPIs --- */
+        .workspace-header { height: 60px; background: var(--bg-header); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); 
+                           display: flex; align-items: center; justify-content: space-between; padding: 0 24px; flex-shrink: 0; z-index: 2000; }
+        .workspace-logo { font-weight: 800; font-size: 1rem; display: flex; align-items: center; gap: 8px; letter-spacing: -0.01em; }
+        
+        .kpi-bar { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; gap: 40px; }
+        .kpi-box { display: flex; flex-direction: column; gap: 1px; }
+        .kpi-label { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.05em; }
+        .kpi-val { font-size: 1rem; font-weight: 800; color: var(--text-primary); }
+
+        /* --- WORKSPACE LAYOUT --- */
+        .workspace-container { flex: 1; display: flex; overflow: hidden; visibility: hidden; opacity: 0; transition: 0.4s; }
+        .workspace-container.active { visibility: visible; opacity: 1; }
+
+        .sidebar { width: 330px; background: var(--bg-sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
+        .sidebar.collapsed { width: 0; border-right: none; }
+        .sidebar-title { padding: 16px 24px; border-bottom: 1px solid var(--border); font-weight: 800; font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; min-width: 330px; }
+        .sidebar-content { flex: 1; overflow-y: auto; padding: 10px; min-width: 330px; }
+
+        /* --- STABLE SIDEBAR FACETS --- */
+        .facet-group { background: var(--bg-sidebar); border-bottom: 1px solid var(--border); margin-bottom: 0px; }
+        .facet-group-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; cursor: pointer; user-select: none; transition: 0.2s; }
+        .facet-group-header:hover { background: var(--accent-light); }
+        .facet-group-name { font-weight: 800; font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin: 0; padding: 0; }
+        .carrot { transition: 0.3s; font-size: 0.7rem; opacity: 0.6; }
+        
+        .facet-content { padding: 4px 14px 14px 14px; display: block; }
+        .facet-group.collapsed .facet-content { display: none; }
+        .facet-group.collapsed .carrot { transform: rotate(-90deg); }
+        .facet-group.collapsed .facet-group-header { opacity: 0.8; }
+
+        .facet-row { display: flex; align-items: center; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; font-weight: 600; gap: 10px; border: 1px solid transparent; }
+        .facet-row:hover { background: var(--accent-light); }
+        .facet-row.dimmed { opacity: 0.4; font-weight: 400; }
+        
+        .tri-state { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; 
+                     font-size: 10px; font-weight: 900; background: transparent; transition: 0.1s; }
+        .tri-include { background: var(--success); border-color: var(--success); color: white; }
+        .tri-exclude { background: var(--danger); border-color: var(--danger); color: white; }
+        
+        .facet-count { margin-left: auto; font-size: 0.7rem; opacity: 0.6; font-weight: 400; }
+
+        /* --- MAIN VIEW --- */
+        .main-view { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; }
+        .tab-panel { padding: 0 24px; border-bottom: 1px solid var(--border); background: var(--bg-card); display: flex; gap: 30px; }
+        .tab { padding: 12px 0; font-weight: 700; font-size: 0.82rem; color: var(--text-secondary); cursor: pointer; border-bottom: 2px solid transparent; }
+        .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        .content-area { flex: 1; overflow: auto; background: var(--bg-card); }
+        .table-view { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.82rem; table-layout: fixed; }
+        th { position: sticky; top: 0; z-index: 100 !important; background: var(--bg-body); padding: 12px 16px; text-align: left; 
+             font-weight: 800; font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase; border-bottom: 1px solid var(--border); }
+        td { padding: 8px 16px; border-bottom: 1px solid var(--border-light); vertical-align: top; word-break: break-all; }
+        tr:nth-child(even) { background-color: var(--bg-body); }
+        tr:hover { background: rgba(56, 189, 248, 0.08); cursor: pointer; }
+        tr.selected { background: var(--accent-light); border-left: 3px solid var(--accent); }
+
+        #details-pane { position: fixed; top: 0; right: 0; bottom: 0; width: 500px; background: var(--bg-card); z-index: 4000; 
+                         box-shadow: -20px 0 60px rgba(0,0,0,0.1); border-left: 1px solid var(--border); display: flex; flex-direction: column;
+                         transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1); }
+        #details-pane.active { transform: translateX(0); }
+        .pane-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .pane-content { flex: 1; overflow-y: auto; padding: 24px; }
+        .detail-item { margin-bottom: 16px; }
+        .detail-label { font-size: 0.65rem; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px; }
+        .detail-val { background: var(--bg-body); padding: 10px; border-radius: 8px; font-size: 0.85rem; border: 1px solid var(--border-light); word-break: break-all; font-family: 'JetBrains Mono', monospace; }
+
+        .status-bar { height: 45px; background: var(--bg-card); border-top: 1px solid var(--border); display: flex; 
+                      align-items: center; justify-content: space-between; padding: 0 24px; font-size: 0.75rem; color: var(--text-secondary); }
+        .btn-page { background: var(--accent-light); border: 1px solid var(--border); padding: 5px 12px; border-radius: 6px; 
+                    cursor: pointer; font-weight: 700; color: var(--text-primary); transition: 0.1s; font-size:0.75rem; }
+        .btn-page:hover { background: var(--border); }
+        .btn-page:disabled { opacity:0.3; cursor:not-allowed; }
+
+        .badge { padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 800; color: white; display: inline-block; }
+        .badge.VIOLATION { background: var(--danger); }
+        .badge.WARNING { background: var(--warning); color: #451a03; }
+        .badge.INFO { background: var(--success); }
+
+        #launchpad { position: fixed; inset: 0; background: var(--bg-body); z-index: 3000; display: flex; align-items: center; justify-content: center; }
+        #launchpad.hidden { display: none; }
+        .drop-zone { width: 580px; padding: 70px; border: 2px solid var(--border); border-radius: 30px; text-align: center; background: var(--bg-card); cursor: pointer; border-style: dashed; }
+        .drop-zone:hover { border-color: var(--accent); border-style: solid; }
+        
+        #loading-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 5000; display: none; align-items: center; justify-content: center; color: white; flex-direction: column; font-weight: 700; }
+        
+        .chart-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 24px; }
+        .chart-title { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px; display: block; }
+        
+        /* Resizable Columns */
+        th { position: relative; user-select: none; transition: background 0.1s; }
+        th:hover { background: var(--accent-light); cursor: pointer; }
+        .resizer { position: absolute; right: 0; top: 0; height: 100%; width: 5px; cursor: col-resize; z-index: 100; }
+        .resizer:hover { background: var(--accent); }
+
+        /* Sort Indicator */
+        .sort-icon { font-size: 0.6rem; margin-left: 6px; opacity: 0.4; }
+        th.sort-asc .sort-icon::after { content: ' ▲'; opacity: 1; color: var(--accent); }
+        th.sort-desc .sort-icon::after { content: ' ▼'; opacity: 1; color: var(--accent); }
+
+        /* Column Manager Modal */
+        #col-manager { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-card); z-index: 6000; padding: 30px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1px solid var(--border); display: none; width: 400px; }
+        .col-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border-light); font-weight: 600; font-size: 0.85rem; }
+        .col-item input { width: 18px; height: 18px; cursor: pointer; }
+        .overlay-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 5500; display: none; }
+        
+        /* Help Modal */
+        #help-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-card); z-index: 7000; padding: 30px; border-radius: 20px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); border: 1px solid var(--border); display: none; width: 600px; max-height: 80vh; overflow-y: auto; }
+        .help-section { margin-bottom: 24px; }
+        .help-section h3 { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; border-bottom: 1px solid var(--border-light); padding-bottom: 4px; }
+        .help-section p { font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin: 0; }
+        .help-shortcut { display: inline-block; background: var(--bg-body); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border); font-family: monospace; font-weight: 700; margin-right: 4px; }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <div id="loading-overlay">⚙️ <span id="loading-text">Loading Analyst Workspace...</span></div>
+
+    <!-- LAUNCHPAD -->
+    <div id="launchpad">
+        <div class="drop-zone" onclick="document.getElementById('db-file').click()">
+            <div style="font-size: 60px; margin-bottom: 20px; opacity:0.5;">🛰️</div>
+            <h1 style="margin: 0; font-size: 1.8rem; font-weight: 900;">Analyst Workspace <span style="font-weight:100; opacity:0.3;">v8.9.0</span></h1>
+            <p style="opacity: 0.6; margin: 10px 0 30px 0; font-size: 1rem;">S1000D Validation Reporting & Data Discovery Matrix</p>
+            <button class="btn-page" style="padding: 14px 40px; border-radius: 12px; background:var(--accent); color:white;">Open SQL Database</button>
+            <input type="file" id="db-file" style="display:none" accept=".db,.sqlite">
+            <div id="msg-box" style="margin-top:20px; color:var(--danger); font-weight:800;"></div>
+        </div>
+    </div>
+
+    <header class="workspace-header">
+        <div class="workspace-logo" style="display:flex; align-items:center; gap:12px;">
+            <button onclick="toggleSidebar()" class="btn-page" style="padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; cursor:pointer;" title="Toggle Sidebar">☰</button>
+            <span>🛰️ <b>Analyst</b>Workspace</span>
+        </div>
+        <div style="flex:1; max-width: 500px; position:relative; margin: 0 40px;">
+            <span style="position:absolute; left:14px; top:8px; opacity:0.4; font-size:0.8rem;">🔍</span>
+            <input type="text" id="omni-search" placeholder="Omni-Search..." 
+                   style="width:100%; padding: 8px 36px; border-radius: 10px; border: 1px solid var(--border); background:var(--bg-body); color:var(--text-primary); outline:none; font-size:0.85rem;">
+        </div>
+        <div>
+            <select id="theme-select" style="background:var(--bg-body); color:var(--text-primary); border:1px solid var(--border); padding:6px; border-radius:8px; font-weight:700; font-size:0.75rem;">
+                <option value="light">Business Light</option>
+                <option value="medium">Neutral Grey</option>
+                <option value="dark" selected>Midnight Blue</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="kpi-bar" id="kpi-bar">
+        <div class="kpi-box"><div class="kpi-label">Volume (Errors)</div><div class="kpi-val" id="kpi-total">0</div></div>
+        <div class="kpi-box"><div class="kpi-label">Valid Files</div><div class="kpi-val" id="kpi-valid" style="color:var(--success)">0</div></div>
+        <div class="kpi-box"><div class="kpi-label">Filtered</div><div class="kpi-val" id="kpi-filtered">0</div></div>
+        <div class="kpi-box"><div class="kpi-label">Violation Rate</div><div class="kpi-val" id="kpi-rate" style="color:var(--danger)">0.0%</div></div>
+        
+        <div class="kpi-box" style="margin-left:auto; flex-direction:row; align-items:center; gap:15px;">
+            <div style="display:flex; flex-direction:column; gap:2px;">
+                <span class="kpi-label">Page Size</span>
+                <select id="ps-selector" onchange="changePageSize(this.value)" style="background:var(--bg-body); color:var(--text-primary); border:1px solid var(--border); padding:4px; border-radius:6px; font-weight:700; font-size:0.75rem;">
+                    <option value="50">50</option>
+                    <option value="100" selected>100</option>
+                    <option value="250">250</option>
+                    <option value="500">500</option>
+                </select>
+            </div>
+            <button class="btn-page" onclick="resetFilters()" title="Clear all search & category filters">Reset Filters</button>
+            <button class="btn-page" onclick="toggleColManager(true)">Columns</button>
+            <button class="btn-page" onclick="toggleHelp(true)" style="background:var(--info); color:white; border-color:var(--info)">Help</button>
+            <button class="btn-page" onclick="exportData()">CSV Export</button>
+        </div>
+    </div>
+
+    <div class="workspace-container" id="workspace">
+        <aside class="sidebar">
+            <div class="sidebar-title" style="display:flex; justify-content:space-between; align-items:center;">
+                <span>Categories</span>
+                <button onclick="resetFilters()" class="btn-page" style="padding:2px 8px; font-size:0.65rem;">Reset</button>
+            </div>
+            <div class="sidebar-content" id="sidebar-filters">
+                <!-- Static Categories with Dynamic Counts -->
+            </div>
+        </aside>
+
+        <main class="main-view">
+            <div class="tab-panel">
+                <div class="tab active" data-tab="matrix" onclick="switchTab('matrix')">Analyst Matrix</div>
+                <div class="tab" data-tab="insights" onclick="switchTab('insights')">Analysis Summary</div>
+                <div class="tab" data-tab="valid" onclick="switchTab('valid')">Valid Files</div>
+            </div>
+
+            <div class="content-area" id="view-matrix">
+                <table class="table-view">
+                    <thead>
+                        <tr id="table-head-row">
+                            <!-- Dynamic Headers -->
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+
+            <div class="content-area" id="view-insights" style="display:none; padding:20px 24px;">
+                <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; max-width: 1600px; margin: 0 auto;">
+                    <div class="chart-card" style="padding:15px; margin-bottom:0;"><span class="chart-title" style="margin-bottom:10px;">Error Distribution by Engine</span><div style="height:200px"><canvas id="ch-engine"></canvas></div></div>
+                    <div class="chart-card" style="padding:15px; margin-bottom:0;"><span class="chart-title" style="margin-bottom:10px;">Issue Severity Breakdown</span><div style="height:200px"><canvas id="ch-severity"></canvas></div></div>
+                    <div class="chart-card" style="grid-column: span 2; padding:15px; margin-bottom:0;"><span class="chart-title" style="margin-bottom:10px;">Top 10 Rule Violations</span><div style="height:250px"><canvas id="ch-rules"></canvas></div></div>
+                </div>
+            </div>
+
+            <div class="content-area" id="view-valid" style="display:none;">
+                <table class="table-view">
+                    <thead>
+                        <tr>
+                            <th style="width:230px">DM Identifier</th>
+                            <th style="width:auto">Filename</th>
+                            <th style="width:100px">InfoCode</th>
+                            <th style="width:100px">RPC</th>
+                            <th style="width:120px">Originator</th>
+                        </tr>
+                    </thead>
+                    <tbody id="valid-table-body"></tbody>
+                </table>
+            </div>
+
+            <footer class="status-bar">
+                <div id="status-text">Analyst Workspace v8.9.0</div>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <button class="btn-page" id="btn-prev" onclick="changePage(-1)">Previous</button>
+                    <span id="page-ind" style="font-weight:800; opacity:0.7">Page 1</span>
+                    <button class="btn-page" id="btn-next" onclick="changePage(1)">Next</button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <div id="details-pane">
+        <div class="pane-header">
+            <h2 style="margin:0; font-size:1rem; font-weight:800;">Entry Diagnostics</h2>
+            <button onclick="toggleDetails(false)" style="background:none; border:none; color:var(--text-secondary); font-size:1.8rem; cursor:pointer;">&times;</button>
+        </div>
+        <div class="pane-content" id="details-view"></div>
+    </div>
+
+    <!-- Column Manager UI -->
+    <div class="overlay-bg" id="overlay" onclick="toggleColManager(false)"></div>
+    <div id="col-manager">
+        <h2 style="margin:0 0 20px 0; font-size:1.1rem; font-weight:800;">Manage Columns</h2>
+        <div id="col-list"></div>
+        <button class="btn-page" style="width:100%; margin-top:20px; background:var(--accent); color:white;" onclick="toggleColManager(false)">Apply & Close</button>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal">
+        <h2 style="margin:0 0 20px 0; font-size:1.1rem; font-weight:800;">🚀 Analyst Workspace Guide</h2>
+        
+        <div class="help-section">
+            <h3>🔍 Filtering & Search</h3>
+            <p>Use the <b>Omni-Search</b> at the top for quick text matches. Use the <b>Tri-State Filters</b> in the sidebar:</p>
+            <p style="margin-top:8px;">
+                <span class="help-shortcut">✓</span> Include only this value<br>
+                <span class="help-shortcut">✕</span> Explicitly exclude this value<br>
+                <span class="help-shortcut">Empty</span> No filter applied
+            </p>
+            <p style="margin-top:8px;">Click the <b>Category Header</b> (e.g. "Status") to expand or collapse the list.</p>
+        </div>
+
+        <div class="help-section">
+            <h3>📊 Data Table Tips</h3>
+            <p><b>Sorting:</b> Click any header name to sort (e.g., sort by RPC or Rule ID). Click again to toggle Asc/Desc.</p>
+            <p><b>Resizing:</b> Drag the thin edge on the right of any header cell to resize columns.</p>
+            <p><b>Columns:</b> Click the "Columns" button to show/hide fields. The order is fixed to S1000D standards.</p>
+        </div>
+
+        <div class="help-section">
+            <h3>📑 Analysis Page</h3>
+            <p>Switch to the <b>"Analysis Summary"</b> tab to see visual charts of error distribution by Source and Rule ID. Charts update in real-time based on your current filters.</p>
+        </div>
+
+        <div class="help-section">
+            <h3>💾 Exporting</h3>
+            <p>The <b>CSV Export</b> button generates a semicolon-delimited file containing exactly the columns currently visible in your table view.</p>
+        </div>
+
+        <button class="btn-page" style="width:100%; background:var(--accent); color:white;" onclick="toggleHelp(false)">Close Guide</button>
+    </div>
+
+    <script>
+        let DATA_RAW = [];
+        let VALID_FILES_RAW = [];
+        let FILTERED_INDICES = [];
+        let GLOBAL_FILTER_KEYS = {}; 
+        let ACTIVE_FILTERS = {}; 
+        let OMNI_QUERY = "";
+        let PAGE = 1;
+        let PAGE_SIZE = 100;
+        let CHARTS = {};
+        let SORT_COL = null;
+        let SORT_DESC = false;
+        
+        const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+        const COL_DEFS = {
+            dm_code: { label: 'DM Identifier', width: '230px' },
+            status: { label: 'Status', width: '100px' },
+            error_type: { label: 'Source', width: '120px' },
+            rule_id: { label: 'Rule ID', width: '140px' },
+            message: { label: 'Message', width: 'auto' },
+            info_code: { label: 'InfoCode', width: '100px' },
+            rpc: { label: 'RPC', width: '100px' },
+            originator: { label: 'Originator', width: '120px' },
+            xpath: { label: 'Location', width: '150px' },
+            attribute: { label: 'Attribute', width: '120px' }
+        };
+        let VISIBLE_COLS = ['dm_code', 'status', 'error_type', 'rule_id', 'message', 'info_code', 'rpc', 'originator', 'xpath', 'attribute'];
+        let COL_WIDTHS = {}; // Persistent widths
+
+        // --- THEME ---
+        const thSel = document.getElementById('theme-select');
+        thSel.onchange = (e) => {
+            document.body.setAttribute('data-theme', e.target.value);
+            localStorage.setItem('aw-theme', e.target.value);
+            if(DATA_RAW.length > 0) renderInsights(); 
+        };
+        const savedTh = localStorage.getItem('aw-theme') || 'dark';
+        document.body.setAttribute('data-theme', savedTh);
+        thSel.value = savedTh;
+
+        // --- SIDEBAR TOGGLE ---
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const isCollapsed = sidebar.classList.toggle('collapsed');
+            localStorage.setItem('aw-sidebar-collapsed', isCollapsed);
+        }
+        const savedSidebarCollapsed = localStorage.getItem('aw-sidebar-collapsed') === 'true';
+        if (savedSidebarCollapsed) {
+            document.querySelector('.sidebar').classList.add('collapsed');
+        }
+
+        // --- CORE LOGIC ---
+        function toggleColManager(show) {
+            document.getElementById('col-manager').style.display = show ? 'block' : 'none';
+            document.getElementById('overlay').style.display = show ? 'block' : 'none';
+            if (show) renderColManager();
+            else { renderHeaders(); renderMatrixPage(1); }
+        }
+
+        function toggleHelp(show) {
+            document.getElementById('help-modal').style.display = show ? 'block' : 'none';
+            document.getElementById('overlay').style.display = show ? 'block' : 'none';
+        }
+
+        function renderColManager() {
+            const list = document.getElementById('col-list');
+            list.innerHTML = Object.entries(COL_DEFS).map(([id, def]) => `
+                <div class="col-item">
+                    <input type="checkbox" ${VISIBLE_COLS.includes(id) ? 'checked' : ''} onchange="toggleCol('${id}', this.checked)">
+                    <span>${def.label}</span>
+                </div>
+            `).join('');
+        }
+
+        function toggleCol(id, visible) {
+            const set = new Set(VISIBLE_COLS);
+            if (visible) set.add(id); else set.delete(id);
+            // Rebuild in correct order of COL_DEFS
+            VISIBLE_COLS = Object.keys(COL_DEFS).filter(k => set.has(k));
+        }
+
+        function renderHeaders() {
+            const row = document.getElementById('table-head-row');
+            row.innerHTML = VISIBLE_COLS.map(id => {
+                const def = COL_DEFS[id];
+                const width = COL_WIDTHS[id] || def.width;
+                const sortClass = SORT_COL === id ? (SORT_DESC ? 'sort-desc' : 'sort-asc') : '';
+                return `
+                    <th style="width:${width}" class="${sortClass}" onclick="sortTable('${id}')">
+                        ${def.label} <span class="sort-icon"></span>
+                        <div class="resizer" onmousedown="initResize(event, '${id}')"></div>
+                    </th>
+                `;
+            }).join('');
+        }
+
+        function sortTable(colId) {
+            if (SORT_COL === colId) SORT_DESC = !SORT_DESC;
+            else { SORT_COL = colId; SORT_DESC = false; }
+            
+            DATA_RAW.sort((a, b) => {
+                let va = a[colId], vb = b[colId];
+                if (!isNaN(va) && !isNaN(vb)) { va = Number(va); vb = Number(vb); }
+                if (va < vb) return SORT_DESC ? 1 : -1;
+                if (va > vb) return SORT_DESC ? -1 : 1;
+                return 0;
+            });
+            
+            renderHeaders();
+            applyAllFilters();
+        }
+
+        function initResize(e, id) {
+            e.stopPropagation();
+            const th = e.target.parentElement;
+            const startX = e.pageX;
+            const startWidth = th.offsetWidth;
+
+            const onMouseMove = (moveEvent) => {
+                const newWidth = startWidth + (moveEvent.pageX - startX);
+                th.style.width = newWidth + 'px';
+                COL_WIDTHS[id] = newWidth + 'px';
+            };
+
+            const onMouseUp = () => {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            };
+
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        }
+
+        function changePageSize(val) {
+            PAGE_SIZE = parseInt(val);
+            renderMatrixPage(1);
+        }
+
+        // --- SQL LOADING ---
+        async function loadDatabase(buffer) {
+            document.getElementById('loading-overlay').style.display = 'flex';
+            try {
+                const config = { locateFile: f => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/${f}` };
+                const SQL = await initSqlJs(config);
+                const db = new SQL.Database(new Uint8Array(buffer));
+                
+                const query = `
+                    SELECT 
+                        f.dm_code, f.filename, e.levelname as status, e.error_type, e.rule_id, 
+                        e.message, l.line_number, l.xpath, f.info_code, f.rpc, f.originator, l.attribute
+                    FROM Locations l
+                    JOIN Files f ON l.file_id = f.id
+                    JOIN Errors e ON l.error_id = e.id
+                    ORDER BY l.id DESC
+                `;
+                
+                let res = db.exec(query);
+                if (res.length > 0) {
+                    const cols = res[0].columns;
+                    DATA_RAW = res[0].values.map(v => {
+                        let o = {};
+                        cols.forEach((c, i) => o[c] = (v[i] === null || v[i] === 'null' ? '-' : v[i]));
+                        o._statusClass = o.status ? o.status.toUpperCase() : 'INFO';
+                        return o;
+                    });
+                    
+                    const categories = ['status', 'error_type', 'rule_id', 'info_code', 'rpc', 'originator'];
+                    GLOBAL_FILTER_KEYS = {};
+                    categories.forEach(c => {
+                        const unique = [...new Set(DATA_RAW.map(r => String(r[c])))].sort();
+                        GLOBAL_FILTER_KEYS[c] = unique;
+                    });
+                }
+                
+                // Fetch total DM count
+                let totalRes = db.exec("SELECT COUNT(*) FROM Files WHERE filename != 'CONFIGURATION_AUDIT'");
+                TOTAL_DM_FILES = (totalRes.length > 0 && totalRes[0].values.length > 0) ? Number(totalRes[0].values[0][0]) : 0;
+
+                // Fetch valid files (files with no ERROR/CRITICAL/VIOLATION findings)
+                const validQuery = `
+                    SELECT 
+                        f.dm_code, f.filename, f.info_code, f.rpc, f.originator
+                    FROM Files f
+                    WHERE f.filename != 'CONFIGURATION_AUDIT'
+                      AND NOT EXISTS (
+                          SELECT 1 FROM Locations l
+                          JOIN Errors e ON l.error_id = e.id
+                          WHERE l.file_id = f.id AND UPPER(e.levelname) IN ('ERROR', 'CRITICAL', 'VIOLATION')
+                      )
+                    ORDER BY f.id DESC
+                `;
+                let validRes = db.exec(validQuery);
+                if (validRes.length > 0) {
+                    const vCols = validRes[0].columns;
+                    VALID_FILES_RAW = validRes[0].values.map(v => {
+                        let o = {};
+                        vCols.forEach((c, i) => o[c] = (v[i] === null || v[i] === 'null' ? '-' : v[i]));
+                        return o;
+                    });
+                }
+
+                if (DATA_RAW.length > 0 || VALID_FILES_RAW.length > 0) {
+                    document.getElementById('launchpad').classList.add('hidden');
+                    document.getElementById('workspace').classList.add('active');
+                    if (DATA_RAW.length > 0) {
+                        renderHeaders();
+                        applyAllFilters();
+                    } else {
+                        updateSummary(0);
+                    }
+                    renderValidFiles();
+                }
+            } catch (err) {
+                document.getElementById('msg-box').innerText = "Data Interface Error: " + err.message;
+            }
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+
+        let TOTAL_DM_FILES = 0;
+
+        let ACTIVE_TAB = 'matrix';
+        let VALID_PAGE = 1;
+        let FILTERED_VALID = [];
+        let SELECTED_RECORD = null;
+
+        function applyAllFilters() {
+            const query = OMNI_QUERY.toLowerCase();
+            const res = [];
+            const dynamicCounts = {}; 
+            Object.keys(GLOBAL_FILTER_KEYS).forEach(c => dynamicCounts[c] = {});
+            let violations = 0;
+
+            for (let i = 0; i < DATA_RAW.length; i++) {
+                const r = DATA_RAW[i];
+                let match = true;
+                for (const colId in ACTIVE_FILTERS) {
+                    const val = String(r[colId]);
+                    const rules = ACTIVE_FILTERS[colId];
+                    if (rules[val] === 'exclude') { match = false; break; }
+                    const hasInclude = Object.values(rules).includes('include');
+                    if (hasInclude && rules[val] !== 'include') { match = false; break; }
+                }
+                if (match && query) {
+                    match = Object.values(r).some(v => String(v).toLowerCase().includes(query));
+                }
+                if (match) {
+                    res.push(i);
+                    Object.keys(GLOBAL_FILTER_KEYS).forEach(c => {
+                        const v = String(r[c]);
+                        dynamicCounts[c][v] = (dynamicCounts[c][v] || 0) + 1;
+                    });
+                    if (r._statusClass.includes('VIOLATION') || r._statusClass.includes('ERROR') || r._statusClass.includes('CRITICAL')) violations++;
+                }
+            }
+
+            FILTERED_INDICES = res;
+            renderStableFacets(dynamicCounts);
+            renderMatrixPage(1);
+            renderValidFiles(1);
+            updateSummary(violations);
+            if (ACTIVE_TAB === 'insights') renderInsights();
+        }
+
+        function toggleFacetGroup(colId) {
+            const isC = localStorage.getItem(`collapse_${colId}`) === 'true';
+            localStorage.setItem(`collapse_${colId}`, !isC);
+            applyAllFilters(); // Re-render everything
+        }
+
+        function renderStableFacets(dynamicCounts) {
+            const root = document.getElementById('sidebar-filters');
+            root.innerHTML = '';
+            const titles = { status: 'Status', error_type: 'Source', rule_id: 'S1000D Rules', info_code: 'Info Codes', rpc: 'RPC Codes', originator: 'Originator' };
+
+            Object.entries(GLOBAL_FILTER_KEYS).forEach(([colId, values]) => {
+                const stored = localStorage.getItem(`collapse_${colId}`);
+                const isCollapsed = stored === null ? true : stored === 'true'; // Default to True
+                const activeCount = ACTIVE_FILTERS[colId] ? Object.keys(ACTIVE_FILTERS[colId]).length : 0;
+                const activeBadge = activeCount > 0 ? `<span style="background:var(--accent); color:white; border-radius:10px; padding:1px 6px; font-size:0.65rem; margin-left:6px;">${activeCount}</span>` : '';
+                const group = document.createElement('div');
+                group.className = `facet-group ${isCollapsed ? 'collapsed' : ''}`;
+                group.innerHTML = `
+                    <div class="facet-group-header" onclick="toggleFacetGroup('${colId}')">
+                        <div class="facet-group-name">${titles[colId]}${activeBadge}</div>
+                        <div class="carrot">▾</div>
+                    </div>
+                    <div class="facet-content"></div>
+                `;
+                
+                const content = group.querySelector('.facet-content');
+                values.forEach(val => {
+                    const count = dynamicCounts[colId][val] || 0;
+                    const state = (ACTIVE_FILTERS[colId] && ACTIVE_FILTERS[colId][val]) || 'none';
+                    const row = document.createElement('div');
+                    row.className = `facet-row ${state !== 'none' ? 'active' : ''} ${count === 0 && state === 'none' ? 'dimmed' : ''}`;
+                    row.onclick = () => cycleFilterState(colId, val);
+                    row.innerHTML = `
+                        <div class="tri-state ${state === 'include' ? 'tri-include' : (state === 'exclude' ? 'tri-exclude' : '')}">
+                            ${state === 'include' ? '✓' : (state === 'exclude' ? '✕' : '')}
+                        </div>
+                        <span class="truncate" style="flex:1">${val}</span>
+                        <span class="facet-count">${count.toLocaleString()}</span>
+                    `;
+                    content.appendChild(row);
+                });
+                root.appendChild(group);
+            });
+        }
+
+        function cycleFilterState(colId, val) {
+            if (!ACTIVE_FILTERS[colId]) ACTIVE_FILTERS[colId] = {};
+            const cur = ACTIVE_FILTERS[colId][val] || 'none';
+            const next = cur === 'none' ? 'include' : (cur === 'include' ? 'exclude' : 'none');
+            if (next === 'none') delete ACTIVE_FILTERS[colId][val];
+            else ACTIVE_FILTERS[colId][val] = next;
+            if (Object.keys(ACTIVE_FILTERS[colId]).length === 0) delete ACTIVE_FILTERS[colId];
+            applyAllFilters();
+        }
+
+        function renderMatrixPage(page) {
+            PAGE = page;
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+            const slice = FILTERED_INDICES.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+            slice.forEach(idx => {
+                const r = DATA_RAW[idx];
+                const tr = document.createElement('tr');
+                tr.onclick = () => {
+                    document.querySelectorAll('tr').forEach(x => x.classList.remove('selected'));
+                    tr.classList.add('selected');
+                    showEntryDetails(r);
+                };
+                
+                const cls = (r._statusClass.includes('VIOLATION') || r._statusClass.includes('ERROR') || r._statusClass.includes('CRITICAL')) ? 'VIOLATION' : (r._statusClass.includes('WARN') ? 'WARNING' : 'INFO');
+                const linePrfx = (r.line_number && r.line_number !== 'N/A' && r.line_number !== '-') ? `${r.line_number}: ` : '';
+
+                tr.innerHTML = VISIBLE_COLS.map(col => {
+                    const val = r[col];
+                    if (col === 'status') return `<td><span class="badge ${cls}">${esc(r._statusClass)}</span></td>`;
+                    if (col === 'xpath') return `<td style="font-size:0.65rem; color:var(--text-secondary)">${esc(linePrfx)}${esc(val.split('/').pop())}</td>`;
+                    if (col === 'rule_id') return `<td style="font-family:'JetBrains Mono'">${esc(val)}</td>`;
+                    if (col === 'dm_code') return `<td style="font-weight:700">${esc(val)}</td>`;
+                    return `<td>${esc(val)}</td>`;
+                }).join('');
+                
+                tbody.appendChild(tr);
+            });
+            
+            if (ACTIVE_TAB === 'matrix') {
+                const total = Math.ceil(FILTERED_INDICES.length / PAGE_SIZE) || 1;
+                document.getElementById('page-ind').innerText = `Page ${page} / ${total}`;
+                document.getElementById('btn-prev').disabled = page <= 1;
+                document.getElementById('btn-next').disabled = page >= total;
+            }
+        }
+
+        function copyDiagAction(btn, type) {
+            if (!SELECTED_RECORD) return;
+            let text = "";
+            if (type === 'xpath') text = String(SELECTED_RECORD.xpath || '');
+            else if (type === 'dmc') text = String(SELECTED_RECORD.dm_code || '');
+            else if (type === 'baseline') {
+                const ruleObj = {
+                    error_type: SELECTED_RECORD.error_type || "BREX",
+                    rule_id: SELECTED_RECORD.rule_id && SELECTED_RECORD.rule_id !== '-' ? SELECTED_RECORD.rule_id : undefined,
+                    dm_code: SELECTED_RECORD.dm_code && SELECTED_RECORD.dm_code !== '-' ? SELECTED_RECORD.dm_code : undefined,
+                    xpath: SELECTED_RECORD.xpath && SELECTED_RECORD.xpath !== '-' && SELECTED_RECORD.xpath !== 'N/A' ? SELECTED_RECORD.xpath : undefined,
+                    reason: "Accepted baseline rule"
+                };
+                Object.keys(ruleObj).forEach(k => ruleObj[k] === undefined && delete ruleObj[k]);
+                text = JSON.stringify(ruleObj, null, 2);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text);
+            }
+            const orig = btn.innerText;
+            btn.innerText = "✓ Copied!";
+            setTimeout(() => { btn.innerText = orig; }, 1400);
+        }
+
+        function showEntryDetails(r) {
+            SELECTED_RECORD = r;
+            const out = document.getElementById('details-view');
+            const actionsHtml = `
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid var(--border);">
+                    <button class="btn-page" style="font-size:0.7rem; padding:6px 10px;" onclick="copyDiagAction(this, 'dmc')">📋 Copy DMC</button>
+                    <button class="btn-page" style="font-size:0.7rem; padding:6px 10px;" onclick="copyDiagAction(this, 'xpath')">📋 Copy XPath</button>
+                    <button class="btn-page" style="font-size:0.7rem; padding:6px 10px; background:var(--accent); color:white;" onclick="copyDiagAction(this, 'baseline')">🛡️ Copy Baseline Rule JSON</button>
+                </div>
+            `;
+            out.innerHTML = actionsHtml + Object.entries(r).filter(([k]) => !k.startsWith('_')).map(([k, v]) => `
+                <div class="detail-item">
+                    <div class="detail-label">${esc(k.replace(/_/g, ' '))}</div>
+                    ${k === 'xpath' ? `<div class="detail-val"><code>${esc(v)}</code></div>` : `<div class="detail-val">${esc(v)}</div>`}
+                </div>
+            `).join('');
+            document.getElementById('details-pane').classList.add('active');
+        }
+
+        function renderInsights() {
+            Object.values(CHARTS).forEach(c => c.destroy());
+            const activeRows = FILTERED_INDICES.map(i => DATA_RAW[i]);
+            const count = (field, limit = 10) => {
+                const m = {}; activeRows.forEach(r => m[r[field]] = (m[r[field]] || 0) + 1);
+                return Object.entries(m).sort((a,b) => b[1] - a[1]).slice(0, limit);
+            };
+            const dataEng = count('error_type');
+            const dataSev = count('status');
+            const dataRules = count('rule_id', 10);
+            const isD = document.body.getAttribute('data-theme') === 'dark';
+            const txtColor = isD ? '#94a3b8' : '#64748b';
+
+            CHARTS.eng = new Chart(document.getElementById('ch-engine'), {
+                type: 'doughnut',
+                data: { labels: dataEng.map(d => d[0]), datasets: [{ data: dataEng.map(d => d[1]), backgroundColor: ['#ef4444', '#f59e0b', '#0ea5e9', '#10b981', '#6366f1', '#a855f7', '#14b8a6'], borderWidth: 0 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: txtColor } } } }
+            });
+
+            CHARTS.sev = new Chart(document.getElementById('ch-severity'), {
+                type: 'pie',
+                data: { labels: dataSev.map(d => d[0]), datasets: [{ data: dataSev.map(d => d[1]), backgroundColor: ['#ef4444', '#f59e0b', '#10b981', '#0ea5e9'], borderWidth: 0 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: txtColor } } } }
+            });
+
+            CHARTS.rules = new Chart(document.getElementById('ch-rules'), {
+                type: 'bar',
+                data: { labels: dataRules.map(d => d[0]), datasets: [{ label: 'Occurrence', data: dataRules.map(d => d[1]), backgroundColor: '#38bdf8' }] },
+                options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } }, scales: { x: { ticks: { color: txtColor } }, y: { ticks: { color: txtColor } } } }
+            });
+        }
+
+        function updateSummary(violations) {
+            document.getElementById('kpi-total').innerText = DATA_RAW.length.toLocaleString();
+            document.getElementById('kpi-filtered').innerText = FILTERED_INDICES.length.toLocaleString();
+            const invalidDmCount = Math.max(0, TOTAL_DM_FILES - VALID_FILES_RAW.length);
+            const rateVal = TOTAL_DM_FILES > 0
+                ? (invalidDmCount / TOTAL_DM_FILES * 100).toFixed(1) + "%"
+                : (violations / (DATA_RAW.length || 1) * 100).toFixed(1) + "%";
+            document.getElementById('kpi-rate').innerText = rateVal;
+            let kpiValid = document.getElementById('kpi-valid');
+            if (kpiValid) kpiValid.innerText = VALID_FILES_RAW.length.toLocaleString();
+        }
+
+        function switchTab(t) {
+            ACTIVE_TAB = t;
+            document.querySelectorAll('.tab').forEach(el => el.classList.toggle('active', el.dataset.tab === t));
+            document.getElementById('view-matrix').style.display = t === 'matrix' ? 'block' : 'none';
+            document.getElementById('view-insights').style.display = t === 'insights' ? 'block' : 'none';
+            document.getElementById('view-valid').style.display = t === 'valid' ? 'block' : 'none';
+            if (t === 'insights') renderInsights();
+            if (t === 'matrix') renderMatrixPage(PAGE);
+            if (t === 'valid') renderValidFiles(VALID_PAGE);
+            
+            document.querySelector('.status-bar').style.display = (t === 'matrix' || t === 'valid') ? 'flex' : 'none';
+        }
+
+        function renderValidFiles(page = 1) {
+            VALID_PAGE = page;
+            const query = OMNI_QUERY.toLowerCase();
+            FILTERED_VALID = VALID_FILES_RAW.filter(r => {
+                if (!query) return true;
+                return Object.values(r).some(v => String(v).toLowerCase().includes(query));
+            });
+
+            const tbody = document.getElementById('valid-table-body');
+            tbody.innerHTML = '';
+            const slice = FILTERED_VALID.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+            slice.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight:700">${esc(r.dm_code)}</td>
+                    <td>${esc(r.filename)}</td>
+                    <td>${esc(r.info_code)}</td>
+                    <td>${esc(r.rpc)}</td>
+                    <td>${esc(r.originator)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            if (ACTIVE_TAB === 'valid') {
+                const total = Math.ceil(FILTERED_VALID.length / PAGE_SIZE) || 1;
+                document.getElementById('page-ind').innerText = `Page ${page} / ${total}`;
+                document.getElementById('btn-prev').disabled = page <= 1;
+                document.getElementById('btn-next').disabled = page >= total;
+            }
+        }
+
+        function toggleDetails(active) { document.getElementById('details-pane').classList.toggle('active', active); }
+        function changePage(delta) {
+            if (ACTIVE_TAB === 'valid') renderValidFiles(VALID_PAGE + delta);
+            else renderMatrixPage(PAGE + delta);
+        }
+        function resetFilters() { ACTIVE_FILTERS = {}; document.getElementById('omni-search').value = ""; OMNI_QUERY = ""; applyAllFilters(); }
+        document.getElementById('omni-search').oninput = e => { OMNI_QUERY = e.target.value; applyAllFilters(); };
+
+        function exportData() {
+            let csv = VISIBLE_COLS.map(c => COL_DEFS[c].label).join(';') + "\n";
+            FILTERED_INDICES.forEach(idx => {
+                const r = DATA_RAW[idx];
+                csv += VISIBLE_COLS.map(c => `"${String(r[c]).replace(/"/g,'""')}"`).join(';') + "\n";
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = 'analyst_workspace_export.csv'; a.click();
+        }
+
+        function handleFile(f) {
+            if (!f) return;
+            const reader = new FileReader();
+            reader.onload = e => loadDatabase(e.target.result);
+            reader.readAsArrayBuffer(f);
+        }
+
+        document.getElementById('db-file').onchange = (e) => handleFile(e.target.files[0]);
+        window.addEventListener('dragover', e => e.preventDefault());
+        window.addEventListener('drop', e => { e.preventDefault(); handleFile(e.dataTransfer.files[0]); });
+
+        let DB_LOADED = false;
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.type === 'S1000D_DB_PAYLOAD' && event.data.b64 && !DB_LOADED) {
+                try {
+                    const binary = atob(event.data.b64);
+                    const bytes = new Uint8Array(binary.length);
+                    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+                    DB_LOADED = true;
+                    loadDatabase(bytes.buffer);
+                } catch (err) {
+                    console.error("Failed to decode DB payload from opener:", err);
+                }
+            }
+        });
+
+        (async function(){
+            if (window.opener) {
+                try { window.opener.postMessage({ type: 'S1000D_REQUEST_DB' }, '*'); } catch (e) {}
+            }
+            const db = new URLSearchParams(window.location.search).get('db');
+            if (db) {
+                try {
+                    const res = await fetch(db);
+                    if (res.ok && !DB_LOADED) {
+                        DB_LOADED = true;
+                        loadDatabase(await res.arrayBuffer());
+                    }
+                } catch(e) {
+                    setTimeout(() => {
+                        if (!DB_LOADED && DATA_RAW.length === 0 && VALID_FILES_RAW.length === 0) {
+                            document.getElementById('msg-box').innerHTML = `Browser blocked local file auto-load for <code>${esc(db)}</code>.<br><span style="font-size:0.85rem; color:var(--text-secondary);">Click <b>Open SQL Database</b> above or drag & drop the <code>.db</code> file onto this window.</span>`;
+                        }
+                    }, 500);
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

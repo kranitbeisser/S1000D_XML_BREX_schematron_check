@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dmodule [
+  <!NOTATION cgm SYSTEM "cgm">
+  <!ENTITY ICN-F0210-AMAM0-001-01-F0210 SYSTEM "ICN-F0210-AMAM0-001-01-F0210.cgm" NDATA cgm>
+  <!ENTITY invalid-icn-format SYSTEM "invalid-icn-format.cgm" NDATA cgm>
+]>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/brex.xsd">
+   <identAndStatusSection>
+      <dmAddress>
+         <dmIdent>
+            <dmCode modelIdentCode="CHAINMID" systemDiffCode="A000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="0000" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D" />
+            <language countryIsoCode="US" languageIsoCode="en" />
+            <issueInfo issueNumber="001" inWork="00"/>
+         </dmIdent>
+         <dmAddressItems>
+            <issueDate year="2026" month="03" day="10"/>
+            <dmTitle>
+               <techName>BREX</techName>
+               <infoName>CHAINMID BREX rules</infoName>
+            </dmTitle>
+         </dmAddressItems>
+      </dmAddress>
+      <dmStatus issueType="new">
+         <security securityClassification="01" />
+         <dataRestrictions>
+            <restrictionInstructions>
+               <dataDistribution/>
+               <exportControl exportRegulationType="exp00">
+                  <exportRegistrationStmt>
+                     <simplePara>This data module contains technology submitted to Export Control. Transfer of this data to a foreign person without export approval is expressly prohibited.</simplePara>
+                  </exportRegistrationStmt>
+               </exportControl>
+            </restrictionInstructions>
+         </dataRestrictions>
+         <responsiblePartnerCompany enterpriseCode="F0210"/>
+         <originator enterpriseCode="F0210">
+            <enterpriseName>F0210</enterpriseName>
+         </originator>
+         <applicRef applicIdentValue="ap01">
+            <dmRef>
+               <dmRefIdent>
+                  <dmCode modelIdentCode="CHAINMID" systemDiffCode="A000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="0000" disassyCode="00" disassyCodeVariant="A" infoCode="0A2" infoCodeVariant="A" itemLocationCode="D"/>
+                  <language countryIsoCode="US" languageIsoCode="en"/>
+               </dmRefIdent>
+            </dmRef>
+         </applicRef>
+         <brexDmRef>
+            <dmRef>
+               <dmRefIdent>
+                  <dmCode modelIdentCode="CHAINBASE" systemDiffCode="A000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="0000" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+                  <language countryIsoCode="US" languageIsoCode="en"/>
+               </dmRefIdent>
+            </dmRef>
+         </brexDmRef>
+         <qualityAssurance>
+            <firstVerification verificationType="tabtop" />
+         </qualityAssurance>
+         <reasonForUpdate updateReasonType="urt01" updateHighlight="0"><simplePara>Initial Release</simplePara></reasonForUpdate>
+      </dmStatus>
+   </identAndStatusSection>
+   <content>
+      <brex>
+         <commonInfo>
+            <para>CHAINMID rules module</para>
+         </commonInfo>
+         <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/descript.xsd">
+            <structureObjectRuleGroup>
+               <structureObjectRule id="RULE-MID-01">
+                  <objectPath allowedObjectFlag="0">/dmodule[./identAndStatusSection/dmStatus/responsiblePartnerCompany[@enterpriseCode != 'MID']]</objectPath>
+                  <objectUse>[RULE-MID-01] Responsible Partner Company must be MID.</objectUse>
+               </structureObjectRule>
+            </structureObjectRuleGroup>
+         </contextRules>
+      </brex>
+   </content>
+</dmodule>

@@ -1,0 +1,2027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?Pub Inc?>
+<?APT StylesheetID Title="descript" Description="" CompositionTypes="" StylerVersion="5.14"?>
+<Styler xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.arbortext.com/namespace/doctypes/styler" xmlns:_gte="http://www.arbortext.com/namespace/Styler/GeneratedTextElements" xmlns:_sfe="http://www.arbortext.com/namespace/Styler/StylerFormattingElements" xmlns:_ufe="http://www.arbortext.com/namespace/Styler/UserFormattingElements" xmlns:_dtd="http://www.arbortext.com/namespace/Styler/UserElements" xmlns:rtf="http://www.cambridgedocs.com/namespace/fo/rtf" xmlns:saxon="http://saxon.sf.net/" xmlns:ns1="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<StyleSheetInfo minorVersion="14" printPdfEngine="FOSI" stylerVersion="5">
+<ElementSet/></StyleSheetInfo>
+<PropertySets>
+<PropertySet propertySetId="box"><?Pub Dtl?>
+<BaseProperties>
+<Highlight shading="#E0FFDF"/></BaseProperties>
+<EditedSource sourceType="fosi">&lt;charsubset charsubsetid="box">
+&lt;boxing toffset="2pt" boffset="2pt" loffset="2pt" roffset="2pt"
+thick="1pt" inclr="#E0FFE0"/>&lt;/charsubset></EditedSource>
+<EditedSource sourceType="xslFo">&lt;xsl:template name="ps-box"> 
+   &lt;xsl:attribute name="background-color">#E0FFE0&lt;/xsl:attribute>
+    &lt;xsl:attribute name="border">thin solid&lt;/xsl:attribute>
+  &lt;xsl:attribute name="padding">2pt&lt;/xsl:attribute>   &lt;/xsl:template></EditedSource>
+<EditedSource sourceType="xslHtml">&lt;xsl:variable name="ps-box">background-color:
+#E0F0E0; border: thin  solid; padding: 2pt; &lt;/xsl:variable></EditedSource>
+<EditedSource sourceType="xslHtmlHelp">&lt;xsl:variable name="ps-box">background-color:
+#E0F0E0; border: thin  solid; padding: 2pt; &lt;/xsl:variable></EditedSource>
+<EditedSource sourceType="xslWeb">&lt;xsl:variable name="ps-box">background-color:
+#E0F0E0; border: thin  solid; padding: 2pt; &lt;/xsl:variable></EditedSource>
+</PropertySet>
+<PropertySet propertySetId="double-underline"><?Pub Dtl?>
+<BaseProperties>
+<Highlight underline="yes"/></BaseProperties>
+<EditedSource sourceType="fosi">&lt;charsubset charsubsetid="double-underline">
+&lt;highlt scoring="1" scorewt="0.05em" scoreoff="0.08em" xscoring="1"
+xscorewt="0.05em"  xscoreoff="0.24em"/>&lt;/charsubset></EditedSource>
+<EditedSource sourceType="xslFo"> &lt;xsl:template name="ps-double-underline">
+    &lt;xsl:attribute name="text-decoration">underline &lt;/xsl:attribute>
+    &lt;xsl:attribute name="atixslfoext:text-underline-style">double&lt;/xsl:attribute>
+  &lt;/xsl:template></EditedSource>
+<EditedSource sourceType="xslHtml">&lt;xsl:variable name="ps-double-underline">border-bottom:
+0.2em double;     &lt;/xsl:variable></EditedSource>
+<EditedSource sourceType="xslHtmlHelp">&lt;xsl:variable name="ps-double-underline">border-bottom:
+0.2em double;     &lt;/xsl:variable></EditedSource>
+<EditedSource sourceType="xslWeb">&lt;xsl:variable name="ps-double-underline">border-bottom:
+0.2em double;     &lt;/xsl:variable></EditedSource>
+</PropertySet>
+<PropertySet propertySetId="Footnote_font">
+<BaseProperties>
+<Font family="Serif" italic="no" size="12pt" weight="normal"/>
+<Highlight allcaps="no" color="#000000" shading="#FFFFFF" smallcaps="no" strikeThrough="no" underline="no"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Index_grouphead_space"><?Pub Dtl?>
+<BaseProperties>
+<SpaceAfter minimum=".3pc" optimum=".5pc" precedence="medium"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Index_group_space"><?Pub Dtl?>
+<BaseProperties>
+<SpaceBefore maximum="1.6pc" minimum="1.2pc" optimum="1.5pc" precedence="medium"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Link"><?Pub Dtl?>
+<BaseProperties>
+<Highlight color="#0000FF" underline="yes"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="List_item_space"><?Pub Dtl?>
+<BaseProperties>
+<SpaceBefore conditionality="discard" maximum="8pt" minimum="4pt" optimum="6pt" precedence="medium"/>
+<SpaceAfter maximum="8pt" minimum="4pt" optimum="6pt" precedence="medium"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="overline"><?Pub Dtl?>
+<BaseProperties></BaseProperties>
+<EditedSource sourceType="fosi">&lt;charsubset charsubsetid="overline">&lt;highlt
+scoring="1" scorewt="0.05em" scoreoff="-0.8em">&lt;/charsubset></EditedSource>
+<EditedSource sourceType="xslFo">&lt;xsl:template name="ps-overline">&lt;xsl:attribute
+name="text-decoration">overline&lt;/xsl:attribute>&lt;/xsl:template></EditedSource>
+<EditedSource sourceType="xslHtml">&lt;xsl:variable name="ps-overline">text-decoration:
+overline&lt;/xsl:variable></EditedSource>
+<EditedSource sourceType="xslHtmlHelp">&lt;xsl:variable name="ps-overline">text-decoration:
+overline&lt;/xsl:variable></EditedSource>
+<EditedSource sourceType="xslWeb">&lt;xsl:variable name="ps-overline">text-decoration:
+overline&lt;/xsl:variable></EditedSource>
+</PropertySet>
+<PropertySet propertySetId="overstrike-with-slash"><?Pub Dtl?>
+<BaseProperties>
+<Highlight strikeThrough="yes"/></BaseProperties>
+<EditedSource sourceType="fosi">&lt;charsubset charsubsetid="overstrike-with-slash">
+&lt;highlt scorechron="1" scorechr="/"/>&lt;/charsubset></EditedSource>
+<EditedSource sourceType="xslFo">&lt;xsl:template name="ps-overstrike-with-slash">
+    &lt;xsl:attribute name="atixslfoext:overstrike">true&lt;/xsl:attribute>
+    &lt;xsl:attribute name="atixslfoext:overstrike-character">/&lt;/xsl:attribute>
+  &lt;/xsl:template></EditedSource>
+</PropertySet>
+<PropertySet propertySetId="Standard_space"><?Pub Dtl?>
+<BaseProperties>
+<SpaceBefore conditionality="discard" maximum="10pt" minimum="6pt" optimum="8pt" precedence="none"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Table_space"><?Pub Dtl?>
+<BaseProperties>
+<SpaceBefore maximum="1.2em" minimum="1.2em" optimum="1.2em" precedence="low"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_1"><?Pub Dtl?>
+<BaseProperties>
+<Font size="20pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_2"><?Pub Dtl?>
+<BaseProperties>
+<Font size="18pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_3"><?Pub Dtl?>
+<BaseProperties>
+<Font size="16pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_4"><?Pub Dtl?>
+<BaseProperties>
+<Font size="14pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_5"><?Pub Dtl?>
+<BaseProperties>
+<Font size="12pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_6"><?Pub Dtl?>
+<BaseProperties>
+<Font size="12pt"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_7"><?Pub Dtl?>
+<BaseProperties>
+<Font size="12pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_8"><?Pub Dtl?>
+<BaseProperties>
+<Font size="12pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_9"><?Pub Dtl?>
+<BaseProperties>
+<Font size="12pt" weight="bold"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_alignment"><?Pub Dtl?>
+<BaseProperties>
+<Alignment align="left" lastLineAlign="relative"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_color"><?Pub Dtl?>
+<BaseProperties>
+<Highlight color="#0000FF"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_color_for_print"><?Pub Dtl?>
+<BaseProperties>
+<Highlight color="#0000FF"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_font"><?Pub Dtl?>
+<BaseProperties>
+<Font family="Sanserif"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_keeps"><?Pub Dtl?>
+<BaseProperties>
+<Hyphenation hyphenate="no"/>
+<Keep keepScope="withinColumn" together="7" withNext="7"/></BaseProperties>
+</PropertySet>
+<PropertySet propertySetId="Title_space"><?Pub Dtl?>
+<BaseProperties>
+<LineSpacing lineHeight="1.1em"/>
+<SpaceBefore maximum="2em" minimum="1em" optimum="1.5em" precedence="medium"/>
+<SpaceAfter maximum="1.5em" minimum=".8em" optimum="1em" precedence="high"/></BaseProperties>
+</PropertySet>
+</PropertySets>
+<Elements>
+<Element description='This element wraps all "Add before" and "Add after" generated text.' name="_sfe:BeforeOrAfterText" style="nostyle"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:BeforeOrAfterText">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element description='This element wraps the content of each item whose content is inserted by Insert Element Content, when occurrence is "all".' name="_sfe:CollectionItem" style="inline"><?Pub Dtl?>
+<Context priority="14.01" selector="_sfe:CollectionItem[1]">
+<BaseProperties>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+<Context priority="9.01" selector="_sfe:CollectionItem[position()>1 and not(position()=last())]">
+<BaseProperties>
+<Breaks blockOrInline="inline"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText>, </_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="4.01" selector="_sfe:CollectionItem[last()]">
+<BaseProperties>
+<Breaks blockOrInline="inline"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText>, and </_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="0" selector="_sfe:CollectionItem">
+<BaseProperties>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps all generated cross-references." name="_sfe:CrossReference" style="inline"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:CrossReference">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps title text in a cross-reference" name="_sfe:CrossReferenceTitle" style="inline"><?Pub Dtl?>
+<Context priority="10" selector="_sfe:HeaderOrFooter//_sfe:CrossReferenceTitle">
+<BaseProperties></BaseProperties>
+</Context>
+<Context priority="0" selector="_sfe:CrossReferenceTitle">
+<BaseProperties>
+<Font italic="yes"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps headers, footers, TOCs, cross references, and repeating titles generated text." name="_sfe:Gentext" style="nostyle"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:Gentext">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps all headers and footers." name="_sfe:HeaderOrFooter" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:HeaderOrFooter">
+<BaseProperties>
+<SpaceBefore maximum="0pt" minimum="0pt" optimum="0pt" precedence="force"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps all indexes." name="_sfe:Index" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:Index">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps the group head and all index entries for an alphabetic group." name="_sfe:IndexAlphaGroup" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexAlphaGroup">
+<BaseProperties>
+<SpaceBefore maximum="1.6pc" minimum="1.2pc" optimum="1.5pc" precedence="medium"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element contains the text of the last page number in a merged page number range." name="_sfe:IndexEndPage" style="inline"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexEndPage">
+<BaseProperties>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText>–</_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps an index entry at any level." name="_sfe:IndexEntry" style="block"><?Pub Dtl?>
+<Context priority="30" selector="_sfe:IndexEntry/_sfe:IndexEntry/_sfe:IndexEntry/_sfe:IndexEntry">
+<BaseProperties>
+<Indent firstLineIndent="*-.5em" leftIndent="@1em"/>
+<Alignment align="left"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="20" selector="_sfe:IndexEntry/_sfe:IndexEntry/_sfe:IndexEntry">
+<BaseProperties>
+<Indent firstLineIndent="*-.5em" leftIndent="@1em"/>
+<Alignment align="left"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="10" selector="_sfe:IndexEntry/_sfe:IndexEntry">
+<BaseProperties>
+<Indent firstLineIndent="*-.5em" leftIndent="@1em"/>
+<Alignment align="left"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="0" selector="_sfe:IndexEntry">
+<BaseProperties>
+<Indent firstLineIndent="*-.5em" lastLineRightIndent="0pt" leftIndent="@.5em" rightIndent="@2pc"/>
+<Alignment align="left"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element contains the heading for a group of index entries." name="_sfe:IndexGroupHead" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexGroupHead">
+<BaseProperties>
+<Font family="sanserif" size="14pt" weight="bold"/>
+<Highlight allcaps="yes"/>
+<Alignment align="left"/>
+<SpaceAfter minimum=".3pc" optimum=".5pc" precedence="medium"/>
+<Breaks blockOrInline="block"/>
+<Keep withNext="7"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element contains the indexed text of an index entry." name="_sfe:IndexHeading" style="inline"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexHeading">
+<BaseProperties>
+<Keep keepScope="withinLine" together="3"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps the page numbers or other locators of an index entry." name="_sfe:IndexLocators" style="inline"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexLocators">
+<BaseProperties>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:Leaders leaderType="dots" leaderSpacing="1em" lenType="fit" minLen="3.00em"/></_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+</Element>
+<Element description="This element contains the text of a single page number or other locator." name="_sfe:IndexPage" style="inline"><?Pub Dtl?>
+<Context priority="2" selector="_sfe:IndexPage[position()>1]">
+<BaseProperties>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText>, </_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="0" selector="_sfe:IndexPage">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps a group head and all index entries that follow alphabetic entries." name="_sfe:IndexPostGroup" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexPostGroup">
+<BaseProperties>
+<SpaceBefore maximum="1.6pc" minimum="1.2pc" optimum="1.5pc" precedence="medium"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps a group head and all index entries that precede alphabetic entries." name="_sfe:IndexPreGroup" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexPreGroup">
+<BaseProperties>
+<SpaceBefore maximum="1.6pc" minimum="1.2pc" optimum="1.5pc" precedence="medium"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps the group head and all index entries for a group that encompasses a range of characters." name="_sfe:IndexRangeGroup" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexRangeGroup">
+<BaseProperties>
+<SpaceBefore maximum="1.6pc" minimum="1.2pc" optimum="1.5pc" precedence="medium"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description='This element contains the text of a "See" reference in an index entry.' name="_sfe:IndexSee" style="inline"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexSee">
+<BaseProperties>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText>, <_gte:Font Posture="italic">See </_gte:Font></_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+</Element>
+<Element description='This element contains the text of a "See Also" reference in an index entry.' name="_sfe:IndexSeeAlso" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexSeeAlso">
+<BaseProperties>
+<Indent firstLineIndent="*-1.5em" leftIndent="@3em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:Font Posture="italic">See also </_gte:Font></_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+</Element>
+<Element description="This element contains the heading for a sub-group of index entries (Chinese modes 1 and 3 only)." name="_sfe:IndexSubGroupHead" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:IndexSubGroupHead">
+<BaseProperties>
+<Font size="14pt" weight="bold"/>
+<Highlight allcaps="yes"/>
+<Alignment align="left"/>
+<SpaceBefore maximum="2pc" minimum="2pc" optimum="2pc" precedence="high"/>
+<Breaks blockOrInline="block"/>
+<Keep withNext="7"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps repeating titles (also known as continued titles)." name="_sfe:RepeatingTitle" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:RepeatingTitle">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element description="This element wraps all tables of contents." name="_sfe:TableOfContents" style="block"><?Pub Dtl?>
+<Context priority="0" selector="_sfe:TableOfContents">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="accessPointRef" style="unstyled">
+<Context priority="0" selector="accessPointRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="acronym" style="unstyled">
+<Context priority="0" selector="acronym">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="acronymDefinition" style="unstyled">
+<Context priority="0" selector="acronymDefinition">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="acronymTerm" style="unstyled">
+<Context priority="0" selector="acronymTerm">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="additionalModification" style="unstyled">
+<Context priority="0" selector="additionalModification">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="applic" style="unstyled">
+<Context priority="0" selector="applic">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="applicCrossRefTableRef" style="unstyled">
+<Context priority="0" selector="applicCrossRefTableRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="applicRef" style="unstyled">
+<Context priority="0" selector="applicRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="assert" style="unstyled">
+<Context priority="0" selector="assert">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="attentionListItemPara" style="unstyled">
+<Context priority="0" selector="attentionListItemPara">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="attentionRandomList" style="unstyled">
+<Context priority="0" selector="attentionRandomList">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="attentionRandomListItem" style="unstyled">
+<Context priority="0" selector="attentionRandomListItem">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="attentionSequentialList" style="unstyled">
+<Context priority="0" selector="attentionSequentialList">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="attentionSequentialListItem" style="unstyled">
+<Context priority="0" selector="attentionSequentialListItem">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="authorityExceptions" style="unstyled">
+<Context priority="0" selector="authorityExceptions">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="authorityInfo" style="unstyled">
+<Context priority="0" selector="authorityInfo">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="authorityInfoAndTp" style="unstyled">
+<Context priority="0" selector="authorityInfoAndTp">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="authorityNotes" style="unstyled">
+<Context priority="0" selector="authorityNotes">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="behavior" style="unstyled">
+<Context priority="0" selector="behavior">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="brexDmRef" style="unstyled">
+<Context priority="0" selector="brexDmRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="caption" style="unstyled">
+<Context priority="0" selector="caption">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="captionBody" style="unstyled">
+<Context priority="0" selector="captionBody">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="captionEntry" style="unstyled">
+<Context priority="0" selector="captionEntry">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="captionGroup" style="unstyled">
+<Context priority="0" selector="captionGroup">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="captionLine" style="unstyled">
+<Context priority="0" selector="captionLine">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="captionRow" style="unstyled">
+<Context priority="0" selector="captionRow">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="captionText" style="unstyled">
+<Context priority="0" selector="captionText">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="catalogSeqNumberRef" style="unstyled">
+<Context priority="0" selector="catalogSeqNumberRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="caution" style="unstyled">
+<Context priority="0" selector="caution">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="cautionRef" style="unstyled">
+<Context priority="0" selector="cautionRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="changeInline" style="unstyled">
+<Context priority="0" selector="changeInline">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="circuitBreakerDescr" style="unstyled">
+<Context priority="0" selector="circuitBreakerDescr">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="circuitBreakerDescrGroup" style="unstyled">
+<Context priority="0" selector="circuitBreakerDescrGroup">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="circuitBreakerDescrSubGroup" style="unstyled">
+<Context priority="0" selector="circuitBreakerDescrSubGroup">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="circuitBreakerLocation" style="unstyled">
+<Context priority="0" selector="circuitBreakerLocation">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="circuitBreakerRef" style="unstyled">
+<Context priority="0" selector="circuitBreakerRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="colspec" style="table">
+<Context priority="0" selector="colspec">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="content" style="unstyled">
+<Context priority="0" selector="content">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="controlIndicatorRef" style="unstyled">
+<Context priority="0" selector="controlIndicatorRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="copyright" style="unstyled">
+<Context priority="0" selector="copyright">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="copyrightPara" style="unstyled">
+<Context priority="0" selector="copyrightPara">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dataConds" style="unstyled">
+<Context priority="0" selector="dataConds">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dataDestruction" style="unstyled">
+<Context priority="0" selector="dataDestruction">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dataDisclosure" style="unstyled">
+<Context priority="0" selector="dataDisclosure">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dataDistribution" style="unstyled">
+<Context priority="0" selector="dataDistribution">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dataHandling" style="unstyled">
+<Context priority="0" selector="dataHandling">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dataRestrictions" style="unstyled">
+<Context priority="0" selector="dataRestrictions">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="definitionList" style="unstyled">
+<Context priority="0" selector="definitionList">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="definitionListHeader" style="unstyled">
+<Context priority="0" selector="definitionListHeader">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="definitionListItem" style="unstyled">
+<Context priority="0" selector="definitionListItem">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="definitionTitle" style="unstyled">
+<Context priority="0" selector="definitionTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="description" style="unstyled">
+<Context priority="0" selector="description">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="displayText" style="unstyled">
+<Context priority="0" selector="displayText">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmAddress" style="unstyled">
+<Context priority="0" selector="dmAddress">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmAddressItems" style="unstyled">
+<Context priority="0" selector="dmAddressItems">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmCode" style="unstyled">
+<Context priority="0" selector="dmCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmIdent" style="unstyled">
+<Context priority="0" selector="dmIdent">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmRef" style="unstyled">
+<Context priority="0" selector="dmRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmRefAddressItems" style="unstyled">
+<Context priority="0" selector="dmRefAddressItems">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmRefIdent" style="unstyled">
+<Context priority="0" selector="dmRefIdent">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmStatus" style="unstyled">
+<Context priority="0" selector="dmStatus">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmTitle" style="unstyled">
+<Context priority="0" selector="dmTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="dmodule" style="document">
+<Context priority="0" selector="dmodule">
+<BaseProperties>
+<Font/>
+<Breaks blockOrInline="block" newPageSet="Default_US_Letter_Page_Set" startNew="page"/></BaseProperties>
+</Context>
+</Element>
+<Element name="emphasis" style="unstyled">
+<Context priority="0" selector="emphasis">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="enterpriseName" style="unstyled">
+<Context priority="0" selector="enterpriseName">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="entry" style="table">
+<Context priority="0" selector="entry">
+<BaseProperties>
+<Indent firstLineIndent="*0pt" leftIndent="0pt" rightIndent="0pt"/>
+<SpaceBefore maximum="0pt" minimum="0pt" optimum="0pt" precedence="force"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="evaluate" style="unstyled">
+<Context priority="0" selector="evaluate">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="excludedModification" style="unstyled">
+<Context priority="0" selector="excludedModification">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="exportControl" style="unstyled">
+<Context priority="0" selector="exportControl">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="exportRegistrationCode" style="unstyled">
+<Context priority="0" selector="exportRegistrationCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="exportRegistrationStmt" style="unstyled">
+<Context priority="0" selector="exportRegistrationStmt">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubCode" style="unstyled">
+<Context priority="0" selector="externalPubCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubIssue" style="unstyled">
+<Context priority="0" selector="externalPubIssue">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubIssueDate" style="unstyled">
+<Context priority="0" selector="externalPubIssueDate">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubIssueInfo" style="unstyled">
+<Context priority="0" selector="externalPubIssueInfo">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubRef" style="unstyled">
+<Context priority="0" selector="externalPubRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubRefAddressItems" style="unstyled">
+<Context priority="0" selector="externalPubRefAddressItems">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubRefIdent" style="unstyled">
+<Context priority="0" selector="externalPubRefIdent">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="externalPubTitle" style="unstyled">
+<Context priority="0" selector="externalPubTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="figure" style="unstyled">
+<Context priority="0" selector="figure">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="figureAlts" style="unstyled">
+<Context priority="0" selector="figureAlts">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="firstVerification" style="unstyled">
+<Context priority="0" selector="firstVerification">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="foldout" style="unstyled">
+<Context priority="0" selector="foldout">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="footnote" style="unstyled">
+<Context priority="0" selector="footnote">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="footnoteRef" style="unstyled">
+<Context priority="0" selector="footnoteRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="footnoteRemarks" style="unstyled">
+<Context priority="0" selector="footnoteRemarks">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="functionalItemCode" style="unstyled">
+<Context priority="0" selector="functionalItemCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="functionalItemRef" style="unstyled">
+<Context priority="0" selector="functionalItemRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="graphic" style="unstyled">
+<Context priority="0" selector="graphic">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="hotspot" style="unstyled">
+<Context priority="0" selector="hotspot">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="identAndStatusSection" style="unstyled">
+<Context priority="0" selector="identAndStatusSection">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="identExtension" style="unstyled">
+<Context priority="0" selector="identExtension">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="identNumber" style="unstyled">
+<Context priority="0" selector="identNumber">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="indexFlag" style="unstyled">
+<Context priority="0" selector="indexFlag">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="infoName" style="unstyled">
+<Context priority="0" selector="infoName">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="inlineSignificantData" style="unstyled">
+<Context priority="0" selector="inlineSignificantData">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="internalRef" style="unstyled">
+<Context priority="0" selector="internalRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="issueDate" style="unstyled">
+<Context priority="0" selector="issueDate">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="issueInfo" style="unstyled">
+<Context priority="0" selector="issueInfo">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="language" style="unstyled">
+<Context priority="0" selector="language">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="legend" style="unstyled">
+<Context priority="0" selector="legend">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element divisionLevel="1" name="levelledPara" style="division">
+<Context divisionLevel="1" priority="0" selector="levelledPara">
+<BaseProperties>
+<Breaks blockOrInline="block" startNew="page"/></BaseProperties>
+</Context>
+</Element>
+<Element name="levelledParaAlts" style="unstyled">
+<Context priority="0" selector="levelledParaAlts">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="listItem" style="unstyled">
+<Context priority="0" selector="listItem">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="listItemDefinition" style="unstyled">
+<Context priority="0" selector="listItemDefinition">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="listItemTerm" style="unstyled">
+<Context priority="0" selector="listItemTerm">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="logo" style="unstyled">
+<Context priority="0" selector="logo">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="manufacturerCode" style="unstyled">
+<Context priority="0" selector="manufacturerCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="modification" style="unstyled">
+<Context priority="0" selector="modification">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="modificationTitle" style="unstyled">
+<Context priority="0" selector="modificationTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="multimedia" style="unstyled">
+<Context priority="0" selector="multimedia">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="multimediaAlts" style="unstyled">
+<Context priority="0" selector="multimediaAlts">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="multimediaObject" style="unstyled">
+<Context priority="0" selector="multimediaObject">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="name" style="unstyled">
+<Context priority="0" selector="name">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="note" style="unstyled">
+<Context priority="0" selector="note">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="notePara" style="unstyled">
+<Context priority="0" selector="notePara">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:contributor" style="unstyled">
+<Context priority="0" selector="ns1:contributor">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:creator" style="unstyled">
+<Context priority="0" selector="ns1:creator">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:date" style="unstyled">
+<Context priority="0" selector="ns1:date">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:format" style="unstyled">
+<Context priority="0" selector="ns1:format">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:identifier" style="unstyled">
+<Context priority="0" selector="ns1:identifier">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:language" style="unstyled">
+<Context priority="0" selector="ns1:language">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:publisher" style="unstyled">
+<Context priority="0" selector="ns1:publisher">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:rights" style="unstyled">
+<Context priority="0" selector="ns1:rights">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:subject" style="unstyled">
+<Context priority="0" selector="ns1:subject">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:title" style="unstyled">
+<Context priority="0" selector="ns1:title">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="ns1:type" style="unstyled">
+<Context priority="0" selector="ns1:type">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="originator" style="unstyled">
+<Context priority="0" selector="originator">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="para" style="paragraph">
+<Context priority="0" selector="para">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="parameter" style="unstyled">
+<Context priority="0" selector="parameter">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="partAndSerialNumber" style="unstyled">
+<Context priority="0" selector="partAndSerialNumber">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="partNumber" style="unstyled">
+<Context priority="0" selector="partNumber">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="pmCode" style="unstyled">
+<Context priority="0" selector="pmCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="pmRef" style="unstyled">
+<Context priority="0" selector="pmRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="pmRefAddressItems" style="unstyled">
+<Context priority="0" selector="pmRefAddressItems">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="pmRefIdent" style="unstyled">
+<Context priority="0" selector="pmRefIdent">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="pmTitle" style="unstyled">
+<Context priority="0" selector="pmTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="policyStatement" style="unstyled">
+<Context priority="0" selector="policyStatement">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="productConfiguration" style="unstyled">
+<Context priority="0" selector="productConfiguration">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="productSafety" style="unstyled">
+<Context priority="0" selector="productSafety">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="pubMedia" style="unstyled">
+<Context priority="0" selector="pubMedia">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="qualityAssurance" style="unstyled">
+<Context priority="0" selector="qualityAssurance">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="quantity" style="unstyled">
+<Context priority="0" selector="quantity">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="quantityGroup" style="unstyled">
+<Context priority="0" selector="quantityGroup">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="quantityTolerance" style="unstyled">
+<Context priority="0" selector="quantityTolerance">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="quantityValue" style="unstyled">
+<Context priority="0" selector="quantityValue">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="randomList" style="unstyled">
+<Context priority="0" selector="randomList">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="rdf:Description" style="unstyled">
+<Context priority="0" selector="rdf:Description">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="reasonForAmendment" style="unstyled">
+<Context priority="0" selector="reasonForAmendment">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="reasonForUpdate" style="unstyled">
+<Context priority="0" selector="reasonForUpdate">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="referencedApplicGroup" style="unstyled">
+<Context priority="0" selector="referencedApplicGroup">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="referencedApplicGroupRef" style="unstyled">
+<Context priority="0" selector="referencedApplicGroupRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="refs" style="unstyled">
+<Context priority="0" selector="refs">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="remarks" style="unstyled">
+<Context priority="0" selector="remarks">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="repositorySourceDmIdent" style="unstyled">
+<Context priority="0" selector="repositorySourceDmIdent">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="responsiblePartnerCompany" style="unstyled">
+<Context priority="0" selector="responsiblePartnerCompany">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="restrictionInfo" style="unstyled">
+<Context priority="0" selector="restrictionInfo">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="restrictionInstructions" style="unstyled">
+<Context priority="0" selector="restrictionInstructions">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="retrofit" style="unstyled">
+<Context priority="0" selector="retrofit">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="row" style="table">
+<Context priority="0" selector="row">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="secondVerification" style="unstyled">
+<Context priority="0" selector="secondVerification">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="security" style="unstyled">
+<Context priority="0" selector="security">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="sequentialList" style="unstyled">
+<Context priority="0" selector="sequentialList">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="serialNumber" style="unstyled">
+<Context priority="0" selector="serialNumber">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="shortExternalPubTitle" style="unstyled">
+<Context priority="0" selector="shortExternalPubTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="shortName" style="unstyled">
+<Context priority="0" selector="shortName">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="shortPmTitle" style="unstyled">
+<Context priority="0" selector="shortPmTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="simplePara" style="unstyled">
+<Context priority="0" selector="simplePara">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="skillLevel" style="unstyled">
+<Context priority="0" selector="skillLevel">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="sourceDmIdent" style="unstyled">
+<Context priority="0" selector="sourceDmIdent">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="spanspec" style="table">
+<Context priority="0" selector="spanspec">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="subScript" style="unstyled">
+<Context priority="0" selector="subScript">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="superScript" style="unstyled">
+<Context priority="0" selector="superScript">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="supersedure" style="unstyled">
+<Context priority="0" selector="supersedure">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="symbol" style="unstyled">
+<Context priority="0" selector="symbol">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="systemBreakdownCode" style="unstyled">
+<Context priority="0" selector="systemBreakdownCode">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="table" style="unstyled">
+<Context priority="0" selector="table">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="tbody" style="table">
+<Context priority="0" selector="tbody">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="techName" style="unstyled">
+<Context priority="0" selector="techName">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="techPubBase" style="unstyled">
+<Context priority="0" selector="techPubBase">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="techStandard" style="unstyled">
+<Context priority="0" selector="techStandard">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="termTitle" style="unstyled">
+<Context priority="0" selector="termTitle">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="tfoot" style="table">
+<Context priority="0" selector="tfoot">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="tgroup" style="table">
+<Context priority="4" selector="tgroup[1]">
+<BaseProperties propertySetReferences="Table_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="2" selector="tgroup[position()>1]">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="thead" style="table">
+<Context priority="0" selector="thead">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Element>
+<Element name="title" style="title">
+<Context priority="20" selector="levelledPara/title">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_1">
+<Indent firstLineIndent="*-0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber display="?.1 "/></_gte:Font></_gte:LabelAndNumberMarker> </_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT) ' '" numberAlignment="left" numberStyle="1" tabtoAfter="0pt"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="0" selector="title">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space">
+<Font weight="bold"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<ReferenceFormats></ReferenceFormats>
+</GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+</Element>
+<Element name="unverified" style="unstyled">
+<Context priority="0" selector="unverified">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="verbatimText" style="unstyled">
+<Context priority="0" selector="verbatimText">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="warning" style="unstyled">
+<Context priority="0" selector="warning">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="warningAndCautionPara" style="unstyled">
+<Context priority="0" selector="warningAndCautionPara">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="warningRef" style="unstyled">
+<Context priority="0" selector="warningRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="warningsAndCautions" style="unstyled">
+<Context priority="0" selector="warningsAndCautions">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="warningsAndCautionsRef" style="unstyled">
+<Context priority="0" selector="warningsAndCautionsRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="xlink:arc" style="unstyled">
+<Context priority="0" selector="xlink:arc">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="xlink:locator" style="unstyled">
+<Context priority="0" selector="xlink:locator">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="xlink:resource" style="unstyled">
+<Context priority="0" selector="xlink:resource">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+<Element name="zoneRef" style="unstyled">
+<Context priority="0" selector="zoneRef">
+<BaseProperties></BaseProperties>
+</Context>
+</Element>
+</Elements>
+<Styles>
+<Style styleName="block"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="crossReference"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<GeneratedText></GeneratedText>
+</BaseProperties>
+</Context>
+</Style>
+<Style styleName="customTable"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Table_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="customTableCell"><?Pub Dtl?>
+<Context priority="0" selector="$customTable//$elemname">
+<BaseProperties>
+<Indent firstLineIndent="*0pt" leftIndent="0pt" rightIndent="0pt"/>
+<SpaceBefore maximum="0pt" minimum="0pt" optimum="0pt" precedence="force"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="customTableHeaderCell"><?Pub Dtl?>
+<Context priority="0" selector="$customTable//$elemname">
+<BaseProperties>
+<Indent firstLineIndent="*0pt" leftIndent="0pt" rightIndent="0pt"/>
+<SpaceBefore maximum="0pt" minimum="0pt" optimum="0pt" precedence="force"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="customTableRow"><?Pub Dtl?>
+<Context priority="0" selector="$customTable/$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="customTableHeaderRow"><?Pub Dtl?>
+<Context priority="0" selector="$customTable/$elemname">
+<BaseProperties>
+<Font weight="bold"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="customTableTitle"><?Pub Dtl?>
+<Context priority="10" selector="$customTable/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space">
+<Font size="14pt" weight="bold"/>
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/>
+</_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<RepeatingTitle>
+<_sfe:Gentext><_sfe:RepeatingTitle><_gte:ElementLabelAndNumber/>
+<_gte:Leaders leaderType="space" lenType="specified" specLen="1em"/>
+<_gte:ElementContent/> (cont'd.)</_sfe:RepeatingTitle></_sfe:Gentext>
+</RepeatingTitle>
+<Numbering alignAt="0pt" followWith="space" format="(CURRENT)" numberAlignment="left" numberScope="(none)" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+</Style>
+<Style styleName="definitionList"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="definitionListItem"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division1"><?Pub Dtl?>
+<Context divisionLevel="1" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block" startNew="page"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division2"><?Pub Dtl?>
+<Context divisionLevel="2" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block" startNew="page"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division3"><?Pub Dtl?>
+<Context divisionLevel="3" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division4"><?Pub Dtl?>
+<Context divisionLevel="4" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division5"><?Pub Dtl?>
+<Context divisionLevel="5" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division6"><?Pub Dtl?>
+<Context divisionLevel="6" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division7"><?Pub Dtl?>
+<Context divisionLevel="7" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division8"><?Pub Dtl?>
+<Context divisionLevel="8" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="division9"><?Pub Dtl?>
+<Context divisionLevel="9" priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="document"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Font/>
+<Breaks blockOrInline="block" newPageSet="Default_US_Letter_Page_Set" startNew="page"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="footnote">
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/>
+<Footnote footnoteModelReference="Default_Footnotes"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:Font TypeSize=".69em" Offset=".33em"><_gte:ElementNumber/></_gte:Font></_sfe:BeforeOrAfterText></AddBefore>
+<Numbering alignAt="0.00pt" followWith="nothing" format="(CURRENT)" numberAlignment="left"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context footnoteModelReference="Default_Footnotes" priority="-0.005" selector="$elemname">
+<BaseProperties propertySetReferences="Footnote_font">
+<Indent firstLineIndent="*-1.50pc" leftIndent="@1.50pc"/>
+<Alignment align="justify"/>
+<Breaks blockOrInline="block"/>
+<Footnote footnoteModelReference="Default_Footnotes"/><?Pub Caret?>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber display="1."/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Numbering alignAt="0.00pt" followWith="tab" format="(CURRENT) '.'" numberAlignment="left" tabtoAfter="1.5pc"/></GeneratedText>
+</BaseProperties>
+</Context>
+</Style>
+<Style styleName="footnoteReference"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/>
+<Footnote footnoteIdRefAttrName="rid" footnoteModelReference="Default_Footnotes" referenceType="references"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:Font TypeSize=".69em" Offset=".33em"><_gte:CrossReference refAttr="rid" xrefStyle="Number"/></_gte:Font></_sfe:BeforeOrAfterText></AddBefore>
+</GeneratedText>
+</BaseProperties>
+</Context>
+</Style>
+<Style styleName="formalBlock"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="graphic"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="hidden"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="index"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block" spanInto="2" startNew="page"/>
+<GeneratedText></GeneratedText>
+</BaseProperties>
+</Context>
+</Style>
+<Style styleName="indexTermAttributeModel"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="indexTermElementModel"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="indexTermNestingElementModel"><?Pub Dtl?>
+<Context priority="20" selector="$elemname//$elemname//$elemname/$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+<Context priority="15" selector="$elemname//$elemname/$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+<Context priority="10" selector="$elemname/$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Hidden hidden="yes"/>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="inline"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="link"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Link">
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="linkTarget"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties></BaseProperties>
+</Context>
+</Style>
+<Style styleName="bulletedList"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="numberedList"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="listItem"><?Pub Dtl?>
+<Context priority="25" selector="*numberedList//*numberedList//*numberedList//*numberedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-2.5em" leftIndent="@2.5em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Numbering alignAt="1.5em" followWith="tab" format="(CURRENT) ')'" numberAlignment="right" numberStyle="1" tabtoAfter="2.5em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="20" selector="*bulletedList//*bulletedList//*bulletedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-1.25em" leftIndent="@1.25em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:BulletMarker><_gte:Font>♦</_gte:Font></_gte:BulletMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Bulleting alignAt="0em" followWith="tab" tabtoAfter="1.25em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="20" selector="*numberedList//*numberedList//*numberedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-3em" leftIndent="@3em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Numbering alignAt="2em" followWith="tab" format="(CURRENT) '.'" numberAlignment="right" numberStyle="i" tabtoAfter="3em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="15" selector="*bulletedList//*bulletedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-1.25em" leftIndent="@1.25em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:BulletMarker><_gte:Font>–</_gte:Font></_gte:BulletMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Bulleting alignAt="0em" followWith="tab" tabtoAfter="1.25em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="15" selector="*numberedList//*numberedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-2em" leftIndent="@2em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Numbering alignAt="1.em" followWith="tab" format="(CURRENT) '.'" numberAlignment="right" numberStyle="a" tabtoAfter="2.em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="10" selector="*bulletedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-1.25em" leftIndent="@1.25em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:BulletMarker><_gte:Font>•</_gte:Font></_gte:BulletMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Bulleting alignAt="0em" followWith="tab" tabtoAfter="1.25em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="10" selector="*numberedList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Indent firstLineIndent="*-2.5em" leftIndent="@2.5em"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<Numbering alignAt="1.5em" followWith="tab" format="(CURRENT) '.'" numberAlignment="right" numberStyle="1" tabtoAfter="2.5em"/></GeneratedText>
+</BaseProperties>
+</Context>
+<Context priority="10" selector="*definitionList/$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="List_item_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="paragraph"><?Pub Dtl?>
+<Context priority="20" selector="*listItem/$elemname[1]">
+<BaseProperties>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+<Context priority="15" selector="*footnote//$elemname[1]">
+<BaseProperties>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+<Context priority="10" selector="*listItem/$elemname[position()>1]">
+<BaseProperties propertySetReferences="List_item_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Standard_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="preformatted"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Font family="Monospace"/>
+<Alignment align="preformatted"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="table"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="tableCell"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Indent firstLineIndent="*0pt" leftIndent="0pt" rightIndent="0pt"/>
+<SpaceBefore maximum="0pt" minimum="0pt" optimum="0pt" precedence="force"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="tableHeaderCell"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Font weight="bold"/>
+<Indent firstLineIndent="*0pt" leftIndent="0pt" rightIndent="0pt"/>
+<SpaceBefore maximum="0pt" minimum="0pt" optimum="0pt" precedence="force"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="tableRoot"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Table_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="tableTgroup"><?Pub Dtl?>
+<Context priority="0" selector="$elemname[1]">
+<BaseProperties propertySetReferences="Table_space">
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+<Context priority="0" selector="$elemname[position()>1]">
+<BaseProperties>
+<Breaks blockOrInline="block"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="tableOfContents"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="block"/>
+<GeneratedText></GeneratedText>
+</BaseProperties>
+</Context>
+</Style>
+<Style styleName="title"><?Pub Dtl?>
+<Context priority="10" selector="*document/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space">
+<Font size="24pt" weight="bold"/>
+<Breaks blockOrInline="block"/></BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="10" selector="*tableOfContents/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space">
+<Font size="18pt" weight="bold"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<ReferenceFormats></ReferenceFormats>
+</GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="10" selector="*formalBlock/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space">
+<Font size="14pt" weight="bold"/>
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<RepeatingTitle><_sfe:Gentext><_sfe:RepeatingTitle><_gte:ElementLabelAndNumber/><_gte:Leaders leaderType="space" lenType="specified" specLen="1em"/><_gte:ElementContent/> (cont'd.)</_sfe:RepeatingTitle></_sfe:Gentext></RepeatingTitle>
+<Numbering alignAt="0pt" followWith="space" format="(CURRENT)" numberAlignment="left" numberScope="(none)" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="10" selector="*division1/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_1">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="10" selector="*division2/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_2">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="10" selector="*division3/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_3">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context selector="*division4/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_4">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context selector="*division5/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_5">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context selector="*division6/$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space Title_6">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context selector="*division7/$elemname">
+<BaseProperties propertySetReferences="Title_color Title_alignment Title_keeps Title_space Title_7">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context selector="*division8/$elemname">
+<BaseProperties propertySetReferences="Title_color Title_alignment Title_keeps Title_space Title_8">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context selector="*division9/$elemname">
+<BaseProperties propertySetReferences="Title_color Title_alignment Title_keeps Title_space Title_9">
+<Indent firstLineIndent="*0pt" leftIndent="@0pt"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<AddBefore><_sfe:BeforeOrAfterText><_gte:LabelAndNumberMarker><_gte:Font><_gte:ElementNumber/></_gte:Font></_gte:LabelAndNumberMarker></_sfe:BeforeOrAfterText></AddBefore>
+<ReferenceFormats></ReferenceFormats>
+<Numbering alignAt="0pt" followWith="space" format="(PREVIOUS) '.' (CURRENT)" numberAlignment="left" numberStyle="1"/></GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+<Context priority="0" selector="$elemname">
+<BaseProperties propertySetReferences="Title_font Title_color Title_alignment Title_keeps Title_space">
+<Font weight="bold"/>
+<Breaks blockOrInline="block"/>
+<GeneratedText>
+<ReferenceFormats></ReferenceFormats>
+</GeneratedText>
+</BaseProperties>
+<OutputProperties output="printpdf" propertySetReferences="Title_color_for_print"></OutputProperties>
+</Context>
+</Style>
+<Style styleName="nostyle"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties>
+<Breaks blockOrInline="inline"/></BaseProperties>
+</Context>
+</Style>
+<Style styleName="unstyled"><?Pub Dtl?>
+<Context priority="0" selector="$elemname">
+<BaseProperties></BaseProperties>
+</Context>
+</Style>
+</Styles>
+<Bullets>
+<Bullet><?Pub Dtl?><_gte:Font>•</_gte:Font></Bullet>
+<Bullet><?Pub Dtl?><_gte:Font>–</_gte:Font></Bullet>
+<Bullet><?Pub Dtl?><_gte:Font>♦</_gte:Font></Bullet>
+<Bullet><?Pub Dtl?><_gte:Font>◊</_gte:Font></Bullet>
+<Bullet><?Pub Dtl?><_gte:Font>⇒</_gte:Font></Bullet>
+</Bullets>
+<ReferenceFormats>
+<ReferenceFormat referenceFormatName="Label_Number"><?Pub Dtl?><_gte:ElementLabelAndNumber/></ReferenceFormat>
+<ReferenceFormat referenceFormatName="Label_Number_Text"><?Pub Dtl?><_gte:ElementLabelAndNumber/> <_sfe:CrossReferenceTitle><_gte:ElementContent/></_sfe:CrossReferenceTitle></ReferenceFormat>
+<ReferenceFormat referenceFormatName="Label_Number_Text_Page"><?Pub Dtl?><_gte:ElementLabelAndNumber/> <_sfe:CrossReferenceTitle><_gte:ElementContent/></_sfe:CrossReferenceTitle>, page <_gte:PageNumberReference/></ReferenceFormat>
+<ReferenceFormat referenceFormatName="Number"><?Pub Dtl?><_gte:ElementNumber/></ReferenceFormat>
+<ReferenceFormat referenceFormatName="Number_Text"><?Pub Dtl?><_gte:ElementNumber/> <_sfe:CrossReferenceTitle><_gte:ElementContent/></_sfe:CrossReferenceTitle></ReferenceFormat>
+<ReferenceFormat referenceFormatName="Page"><?Pub Dtl?><_gte:PageNumberReference/></ReferenceFormat>
+<ReferenceFormat referenceFormatName="Text"><?Pub Dtl?><_sfe:CrossReferenceTitle><_gte:ElementContent/></_sfe:CrossReferenceTitle></ReferenceFormat>
+</ReferenceFormats>
+<Indexes>
+<Index indexName="Main_Index"/></Indexes>
+<PrintPageSets>
+<PrintPageSet pageSetName="Default_A4_Page_Set"><?Pub Dtl?>
+<Margins bottom="40mm" evenLeft="25mm" evenRight="25mm" oddLeft="25mm" oddRight="25mm" paperHeight="297mm" paperWidth="210mm" top="40mm"/>
+<Headers fromEdge="25mm"></Headers>
+<Footers fromEdge="25mm">
+<OddFooters>
+<Footer><_sfe:Gentext><_sfe:HeaderOrFooter><_dtd:table frame="none"><_dtd:tgroup cols="3"><?PubTbl tgroup clmarg="0.00pt" crmarg="0.00pt" ctmarg="0.00pt" cbmarg="0.00pt"?><_dtd:colspec align="left" colname="col1" colsep="0" rowsep="0"/><_dtd:colspec align="center" colname="col2" colsep="0" rowsep="0"/><_dtd:colspec align="right" colname="col3" colsep="0" rowsep="0"/><_dtd:tbody><_dtd:row><_dtd:entry valign="bottom"></_dtd:entry><_dtd:entry valign="bottom"><_gte:FormattedPageNumber/></_dtd:entry><_dtd:entry valign="bottom"></_dtd:entry></_dtd:row></_dtd:tbody></_dtd:tgroup></_dtd:table></_sfe:HeaderOrFooter></_sfe:Gentext></Footer>
+</OddFooters>
+<EvenFooters>
+<Footer><_sfe:Gentext><_sfe:HeaderOrFooter><_dtd:table frame="none"><_dtd:tgroup cols="3"><?PubTbl tgroup clmarg="0.00pt" crmarg="0.00pt" ctmarg="0.00pt" cbmarg="0.00pt"?><_dtd:colspec align="left" colname="col1" colsep="0" rowsep="0"/><_dtd:colspec align="center" colname="col2" colsep="0" rowsep="0"/><_dtd:colspec align="right" colname="col3" colsep="0" rowsep="0"/><_dtd:tbody><_dtd:row><_dtd:entry valign="bottom"></_dtd:entry><_dtd:entry valign="bottom"><_gte:FormattedPageNumber/></_dtd:entry><_dtd:entry valign="bottom"></_dtd:entry></_dtd:row></_dtd:tbody></_dtd:tgroup></_dtd:table></_sfe:HeaderOrFooter></_sfe:Gentext></Footer>
+</EvenFooters>
+</Footers>
+<Columns>
+<Column columnCount="1"/>
+<Column columnCount="2" gutter="5mm"/>
+<Column columnCount="3" gutter="5mm"/>
+<Column columnCount="4" gutter="5mm"/>
+<Column columnCount="5" gutter="5mm"/>
+<Column columnCount="6" gutter="5mm"/>
+<Column columnCount="7" gutter="5mm"/>
+<Column columnCount="8" gutter="5mm"/></Columns>
+<PageNumbers><_gte:PageNumber/></PageNumbers>
+</PrintPageSet>
+<PrintPageSet pageSetName="Default_US_Letter_Page_Set"><?Pub Dtl?>
+<Margins/>
+<Headers></Headers>
+<Footers>
+<OddFooters>
+<Footer><_sfe:Gentext><_sfe:HeaderOrFooter><_dtd:table frame="none"><_dtd:tgroup cols="3"><?PubTbl tgroup clmarg="0.00pt" crmarg="0.00pt" ctmarg="0.00pt" cbmarg="0.00pt"?><_dtd:colspec align="left" colname="col1" colsep="0" rowsep="0"/><_dtd:colspec align="center" colname="col2" colsep="0" rowsep="0"/><_dtd:colspec align="right" colname="col3" colsep="0" rowsep="0"/><_dtd:tbody><_dtd:row><_dtd:entry valign="bottom"></_dtd:entry><_dtd:entry valign="bottom"><_gte:FormattedPageNumber/></_dtd:entry><_dtd:entry valign="bottom"></_dtd:entry></_dtd:row></_dtd:tbody></_dtd:tgroup></_dtd:table></_sfe:HeaderOrFooter></_sfe:Gentext></Footer>
+</OddFooters>
+<EvenFooters>
+<Footer><_sfe:Gentext><_sfe:HeaderOrFooter><_dtd:table frame="none"><_dtd:tgroup cols="3"><?PubTbl tgroup clmarg="0.00pt" crmarg="0.00pt" ctmarg="0.00pt" cbmarg="0.00pt"?><_dtd:colspec align="left" colname="col1" colsep="0" rowsep="0"/><_dtd:colspec align="center" colname="col2" colsep="0" rowsep="0"/><_dtd:colspec align="right" colname="col3" colsep="0" rowsep="0"/><_dtd:tbody><_dtd:row><_dtd:entry valign="bottom"></_dtd:entry><_dtd:entry valign="bottom"><_gte:FormattedPageNumber/></_dtd:entry><_dtd:entry valign="bottom"></_dtd:entry></_dtd:row></_dtd:tbody></_dtd:tgroup></_dtd:table></_sfe:HeaderOrFooter></_sfe:Gentext></Footer>
+</EvenFooters>
+</Footers>
+<Columns>
+<Column columnCount="1"/>
+<Column columnCount="2"/>
+<Column columnCount="3"/>
+<Column columnCount="4"/>
+<Column columnCount="5"/>
+<Column columnCount="6"/>
+<Column columnCount="7"/>
+<Column columnCount="8"/></Columns>
+<PageNumbers><_gte:PageNumber/></PageNumbers>
+</PrintPageSet>
+</PrintPageSets>
+<TablesOfContents></TablesOfContents>
+<FootnoteModels>
+<FootnoteModel columnOrPageWide="page" footnoteModelName="Default_Footnotes" footnoteNumberStyle="1" insertSeparator="yes" separatorAlign="left" separatorLengthType="specified" separatorRuleLength="9pc" separatorRuleThickness=".5pt" spaceAboveFootnote="15pt" spaceBelowSeparator="2pt"/></FootnoteModels>
+<Tables>
+<TableModel model="cals" primary="yes"/></Tables>
+<CustomTables></CustomTables>
+</Styler>
+<?Pub *0000080588?>

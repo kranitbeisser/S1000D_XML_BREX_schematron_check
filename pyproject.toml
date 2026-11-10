@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "s1000d-validator"
+version = "8.7.0"
+description = "S1000D XML BREX & Schematron validation engine"
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = [
+    "requests",
+    "lxml",
+    "elementpath",
+    "saxonche"
+]
+
+[project.scripts]
+s1000d-validate = "s1000d_validator.cli:main"
+s1000d-gui = "s1000d_validator.gui:main"
+
+[tool.setuptools]
+packages = ["s1000d_validator"]

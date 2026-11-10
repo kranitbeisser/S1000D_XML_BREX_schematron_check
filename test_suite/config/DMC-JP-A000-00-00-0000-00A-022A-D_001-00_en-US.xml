@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/brex.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="JP" systemDiffCode="A000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="0000" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+        <language countryIsoCode="US" languageIsoCode="en"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2026" month="03" day="10"/>
+        <dmTitle>
+          <techName>Internal data checks</techName>
+          <infoName>Business rules</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="changed">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="F0210">
+        <enterpriseName>Standard Enterprise</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="F0210">
+        <enterpriseName>Standard Enterprise</enterpriseName>
+      </originator>
+      <applic>
+        <displayText>
+          <simplePara>All</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="S1000D" systemDiffCode="A000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="0000" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+            <language countryIsoCode="US" languageIsoCode="en"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <firstVerification verificationType="tabtop"/>
+      </qualityAssurance>
+      <reasonForUpdate/>
+      <remarks>
+        <simplePara>The reasonForUpdate codification is the following: date | change type | impacted BREX | reason</simplePara>
+        <simplePara>The change type values are the following: A: Added - D: Deleted - U: Updated - T: Temporary disabled - R: Reactivated</simplePara>
+      </remarks>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <brex>
+      <commonInfo>
+        <para>This BREX data module is provided for internal uses and defines rules in accordance with the
+          <externalPubRef>
+            <externalPubRefIdent>
+              <externalPubCode>Authoring Specification - Issue B.1.pdf</externalPubCode>
+            </externalPubRefIdent>
+          </externalPubRef> document.
+        </para>
+      </commonInfo>
+      <contextRules>
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-34203JP">
+            <objectPath allowedObjectFlag="0">/dmodule[not(.//dmCode/@modelIdentCode=('JP', '02', 'AHTDGEN', 'S1000D'))]</objectPath>
+            <objectUse>[BRDP-AH-34203JP] For the TIGER program, only MI Codes “JP” and “02” can be used for data modules production. In addition, MI Codes “AHTDGEN” and “S1000D” are used for BREX layering. (3.4.2 Model identifier Code (MI))</objectUse>
+          </structureObjectRule>
+          <!--
+          <structureObjectRule id="BRDP-AH-35000JP">
+            <objectPath allowedObjectFlag="0">//@infoEntityIdent[substring(tokenize(., '-')[3], 1, 1) != substring(/dmodule/identAndStatusSection/dmAddress/dmIdent/dmCode/@systemDiffCode, 1, 1)]</objectPath>
+            <objectUse>[BRDP-AH-35000JP] For Tiger program, the first digit of the SDC in the frame of Information Control Number is fixed to ‘A’ for Tiger air vehicle, equipment and Engine MTR390-2C or both Engine (MTR390-2C/MTR390E) and fixed to ‘B’ for engine MTR390E only. (3.5 Information Control Number)</objectUse>
+          </structureObjectRule>
+          -->
+          <structureObjectRule id="BRDP-AH-35001JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//(figure/graphic|multimedia/multimediaObject)/@infoEntityIdent[not(substring(tokenize(string(), '-')[3], 2, 1)='M')]</objectPath>
+            <objectUse>[BRDP-AH-35001JP] For Tiger program, the second digit of the SDC in the frame of Information Control Number is fixed to ‘M’. (3.5 Information Control Number)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-35003JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//(figure/graphic|multimedia/multimediaObject)/@infoEntityIdent[not(substring(tokenize(string(), '-')[3], 3, 1)='A')]</objectPath>
+            <objectUse>[BRDP-AH-35003JP] For Tiger program, the third digit of the SDC in the frame of Information Control Number is fixed to ‘A’. (3.5 Information Control Number)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-35004JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//(figure/graphic|multimedia/multimediaObject)/@infoEntityIdent[not(substring(tokenize(string(), '-')[3], 4, 1)='M')]</objectPath>
+            <objectUse>[BRDP-AH-35004JP] For Tiger program, the fourth digit of the SDC in the frame of Information Control Number is fixed to ‘M’. (3.5 Information Control Number)</objectUse>
+          </structureObjectRule>
+          <!-- Redundancy removed 17.03.2026
+          <structureObjectRule id="BRDP-AH-41315JP">
+            <objectPath allowedObjectFlag="0">/dmodule[not(./identAndStatusSection/dmAddress/dmIdent/language/@languageIsoCode=('fr', 'es', 'en', 'de'))]</objectPath>
+            <objectUse>[BRDP-AH-41315JP] For Tiger program, attribute languageIsoCode of the element &lt;language&gt; must reflect the target language for the translated DM and be filled with the following values: FR for French, ES for Spanish, DE for German and EN for English. (4.1.3 Rules for Translation)</objectUse>
+          </structureObjectRule> -->
+          <!-- Redundancy removed 17.03.2026
+          <structureObjectRule id="BRDP-AH-41316JP">
+            <objectPath allowedObjectFlag="0">/dmodule[not(./identAndStatusSection/dmAddress/dmIdent/language/@countryIsoCode=('FR', 'ES', 'EN', 'DE'))]</objectPath>
+            <objectUse>[BRDP-AH-41316JP] For Tiger program, attribute countryIsoCode of the element &lt;language&gt; must reflect the target language for the translated DM and be filled with the following values: FR for French, ES for Spanish, DE for German and EN for English. (4.1.3 Rules for Translation)</objectUse>
+          </structureObjectRule> -->
+          <structureObjectRule id="BRDP-AH-41318JP">
+            <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmStatus/originator/enterpriseName</objectPath>
+            <objectUse>[BRDP-AH-41318JP] For the Tiger program, the content of the element &lt;originator&gt; is the NCAGE of the company who translate the Data Module for a translated Data Module. For Airbus Helicopter, the values are: F0210 for French, 274BB for Spanish, and C0418 for German. (4.1.3 Rules for Translation)</objectUse>
+            <objectValue valueForm="single" valueAllowed="F0210"/>
+            <objectValue valueForm="single" valueAllowed="274BB"/>
+            <objectValue valueForm="single" valueAllowed="C0418"/>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-41323JP">
+            <objectPath allowedObjectFlag="0">/dmodule/identAndStatusSection/dmStatus[sourceDmIdent and not(./remarks/simplePara[starts-with(text(), 'Traduction basée sur Issue') or starts-with(text(), 'Translation based on issue') or starts-with(text(), 'Übersetzung basiert auf issue') or starts-with(text(), 'Traducción basada en la issue')])]</objectPath>
+            <objectUse>[BRDP-AH-41323JP] For Tiger program, the element &lt;remarks&gt; must be populated in the translated DM with the information that are present in the source DM (when relevant). In addition, the information “Traduction basée sur Issue xxx (LL)” for French translation, “Translation based on issue XXX (LL)” for English language, ”Übersetzung basiert auf issue XXX (LL)“ for German language or “Traducción basada en la issue XXX (LL)” for Spanish Language must be added. The variable part xxx relates to the Issue Number of the Source DM and LL relates to the source language. (4.1.3 Rules for Translation)</objectUse>
+          </structureObjectRule>
+          <!-- changed Steffen 17.03.2026 -->
+          <structureObjectRule id="BRDP-AH-42038JP">
+            <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmAddress/dmIdent/language/@languageIsoCode</objectPath>
+            <objectUse>[BRDP-AH-42038JP] For Tiger Program, attribute languageIsoCode of element language must be populated with the values "en" if the DM is written in English language, "fr" if the DM is written in French language, "de" if the DM is written in German language and "es" if the DM is written in Spanish language. (4.2.1 Identification and status section)</objectUse>
+            <objectValue valueForm="single" valueAllowed="en"/>
+            <objectValue valueForm="single" valueAllowed="fr"/>
+            <objectValue valueForm="single" valueAllowed="de"/>
+            <objectValue valueForm="single" valueAllowed="es"/>
+          </structureObjectRule>
+          <!-- changed Steffen 17.03.2026 -->
+          <structureObjectRule id="BRDP-AH-42039JP">
+            <objectPath allowedObjectFlag="0">/dmodule/identAndStatusSection/dmAddress/dmIdent/language/@countryIsoCode[
+				(../@languageIsoCode = 'en' and . != 'EN') or
+				(../@languageIsoCode = 'fr' and . != 'FR') or
+				(../@languageIsoCode = 'de' and . != 'DE') or
+				(../@languageIsoCode = 'es' and . != 'ES')]
+			</objectPath>
+            <objectUse>[BRDP-AH-42039JP] For Tiger Program, attribute countryIsoCode of element language must be populated with the values EN if the DM is written in English language, FR if the DM is written in French language, DE if the DM is written in German language and ES if the DM is written in Spanish language. (4.2.1 Identification and status section)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-85001JP">
+            <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmStatus/security/@caveat</objectPath>
+            <objectUse>[BRDP-AH-85001JP] For TIGER program, the attribute caveat can contain only the following values: "cv51", "cv52", "cv53", "cv54" and "cv60". (4.2.1 Identification and status section)</objectUse>
+            <objectValue valueForm="single" valueAllowed="cv51"/>
+            <objectValue valueForm="single" valueAllowed="cv52"/>
+            <objectValue valueForm="single" valueAllowed="cv53"/>
+            <objectValue valueForm="single" valueAllowed="cv54"/>
+            <objectValue valueForm="single" valueAllowed="cv60"/>
+          </structureObjectRule>
+          <!-- changed Steffen 17.03.2026 -->
+          <structureObjectRule id="BRDP-AH-99041JP">
+            <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmStatus/responsiblePartnerCompany/@enterpriseCode</objectPath>
+            <objectUse>[BRDP-AH-99041JP] For the TIGER program, the attribute enterpriseCode of the element responsiblePartnerCompany must be populated with an approved partner CAGE code. (4.2.1 Identification and status section)</objectUse>
+            <objectValue valueForm="single" valueAllowed="D2714" valueTailoring="lexical">AIRBUS DEFENSE AND SPACE</objectValue>
+            <objectValue valueForm="single" valueAllowed="274BB" valueTailoring="lexical">AIRBUS HELICOPTERS (España)</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0210" valueTailoring="lexical">AIRBUS HELICOPTERS (France)</objectValue>
+            <objectValue valueForm="single" valueAllowed="C0418" valueTailoring="lexical">AIRBUS HELICOPTERS (Germany)</objectValue>
+            <objectValue valueForm="single" valueAllowed="C5238" valueTailoring="lexical">AIRBUS HELICOPTERS TIGER</objectValue>
+            <objectValue valueForm="single" valueAllowed="0118B" valueTailoring="lexical">AMPER</objectValue>
+            <objectValue valueForm="single" valueAllowed="CG943" valueTailoring="lexical">BAAINBw</objectValue>
+            <objectValue valueForm="single" valueAllowed="U1907" valueTailoring="lexical">COBHAM - CHELTON LIMITED</objectValue>
+            <objectValue valueForm="single" valueAllowed="4848B" valueTailoring="lexical">DGAM MADRID</objectValue>
+            <objectValue valueForm="single" valueAllowed="FOSJP" valueTailoring="lexical">FRENCH OFFICIAL SERVICES</objectValue>
+            <objectValue valueForm="single" valueAllowed="B0139" valueTailoring="lexical">FZ FORGES</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0531" valueTailoring="lexical">GIAT INDUSTRIES</objectValue>
+            <objectValue valueForm="single" valueAllowed="DP602" valueTailoring="lexical">HENSOLDT</objectValue>
+            <objectValue valueForm="single" valueAllowed="0177B" valueTailoring="lexical">INDRA</objectValue>
+            <objectValue valueForm="single" valueAllowed="8338B" valueTailoring="lexical">ITP AERO</objectValue>
+            <objectValue valueForm="single" valueAllowed="FASL3" valueTailoring="lexical">KNDS (NEXTER)</objectValue>
+            <objectValue valueForm="single" valueAllowed="F1958" valueTailoring="lexical">LIEBHERR</objectValue>
+            <objectValue valueForm="single" valueAllowed="04939" valueTailoring="lexical">LOCKHEED MARTIN</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0555" valueTailoring="lexical">MBDA</objectValue>
+            <objectValue valueForm="single" valueAllowed="C0415" valueTailoring="lexical">MBDA Germany</objectValue>
+            <objectValue valueForm="single" valueAllowed="F6137" valueTailoring="lexical">MESSIER-BUGATTI DOWTI</objectValue>
+            <objectValue valueForm="single" valueAllowed="C4270" valueTailoring="lexical">MTR</objectValue>
+            <objectValue valueForm="single" valueAllowed="D3309" valueTailoring="lexical">MTU AERO ENGINE AG</objectValue>
+            <objectValue valueForm="single" valueAllowed="SH469" valueTailoring="lexical">RAFAEL</objectValue>
+            <objectValue valueForm="single" valueAllowed="D0894" valueTailoring="lexical">Rohde &amp; Schwarz</objectValue>
+            <objectValue valueForm="single" valueAllowed="K0378" valueTailoring="lexical">ROLLS ROYCE</objectValue>
+            <objectValue valueForm="single" valueAllowed="FAQ15" valueTailoring="lexical">SAFRAN ELECRONICS DEFENSE</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0559" valueTailoring="lexical">SAFRAN FILTRATION SYSTEM</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0228" valueTailoring="lexical">SAFRAN HELICOPTERS ENGINE</objectValue>
+            <objectValue valueForm="single" valueAllowed="F6151" valueTailoring="lexical">SAGEM</objectValue>
+            <objectValue valueForm="single" valueAllowed="D7097" valueTailoring="lexical">STENDER</objectValue>
+            <objectValue valueForm="single" valueAllowed="D6513" valueTailoring="lexical">TELEFUNKEN RACOMS</objectValue>
+            <objectValue valueForm="single" valueAllowed="F9111" valueTailoring="lexical">THALES AVS FRANCE SAS</objectValue>
+            <objectValue valueForm="single" valueAllowed="D2416" valueTailoring="lexical">THALES GERMANY</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0556" valueTailoring="lexical">THALES LAS FRANCE</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0057" valueTailoring="lexical">THALES SIX GTS France</objectValue>
+            <objectValue valueForm="single" valueAllowed="F6101" valueTailoring="lexical">ZODIAC AEROSAFETY SYSTEMS</objectValue>
+          </structureObjectRule>
+          <!-- changed Steffen 17.03.2026 -->
+          <structureObjectRule id="BRDP-AH-99042JP">
+            <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmStatus/originator/@enterpriseCode</objectPath>
+            <objectUse>[BRDP-AH-99042JP] For TIGER program, the attribute enterpriseCode of the element originator must be populated with the Cage Code F0210. (4.2.1 Identification and status section)</objectUse>
+            <objectValue valueForm="single" valueAllowed="D2714" valueTailoring="lexical">AIRBUS DEFENSE AND SPACE</objectValue>
+            <objectValue valueForm="single" valueAllowed="274BB" valueTailoring="lexical">AIRBUS HELICOPTERS (España)</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0210" valueTailoring="lexical">AIRBUS HELICOPTERS (France)</objectValue>
+            <objectValue valueForm="single" valueAllowed="C0418" valueTailoring="lexical">AIRBUS HELICOPTERS (Germany)</objectValue>
+            <objectValue valueForm="single" valueAllowed="C5238" valueTailoring="lexical">AIRBUS HELICOPTERS TIGER</objectValue>
+            <objectValue valueForm="single" valueAllowed="0118B" valueTailoring="lexical">AMPER</objectValue>
+            <objectValue valueForm="single" valueAllowed="CG943" valueTailoring="lexical">BAAINBw</objectValue>
+            <objectValue valueForm="single" valueAllowed="U1907" valueTailoring="lexical">COBHAM - CHELTON LIMITED</objectValue>
+            <objectValue valueForm="single" valueAllowed="4848B" valueTailoring="lexical">DGAM MADRID</objectValue>
+            <objectValue valueForm="single" valueAllowed="FOSJP" valueTailoring="lexical">FRENCH OFFICIAL SERVICES</objectValue>
+            <objectValue valueForm="single" valueAllowed="B0139" valueTailoring="lexical">FZ FORGES</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0531" valueTailoring="lexical">GIAT INDUSTRIES</objectValue>
+            <objectValue valueForm="single" valueAllowed="DP602" valueTailoring="lexical">HENSOLDT</objectValue>
+            <objectValue valueForm="single" valueAllowed="0177B" valueTailoring="lexical">INDRA</objectValue>
+            <objectValue valueForm="single" valueAllowed="8338B" valueTailoring="lexical">ITP AERO</objectValue>
+            <objectValue valueForm="single" valueAllowed="FASL3" valueTailoring="lexical">KNDS (NEXTER)</objectValue>
+            <objectValue valueForm="single" valueAllowed="F1958" valueTailoring="lexical">LIEBHERR</objectValue>
+            <objectValue valueForm="single" valueAllowed="04939" valueTailoring="lexical">LOCKHEED MARTIN</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0555" valueTailoring="lexical">MBDA</objectValue>
+            <objectValue valueForm="single" valueAllowed="C0415" valueTailoring="lexical">MBDA Germany</objectValue>
+            <objectValue valueForm="single" valueAllowed="F6137" valueTailoring="lexical">MESSIER-BUGATTI DOWTI</objectValue>
+            <objectValue valueForm="single" valueAllowed="C4270" valueTailoring="lexical">MTR</objectValue>
+            <objectValue valueForm="single" valueAllowed="D3309" valueTailoring="lexical">MTU AERO ENGINE AG</objectValue>
+            <objectValue valueForm="single" valueAllowed="SH469" valueTailoring="lexical">RAFAEL</objectValue>
+            <objectValue valueForm="single" valueAllowed="D0894" valueTailoring="lexical">Rohde &amp; Schwarz</objectValue>
+            <objectValue valueForm="single" valueAllowed="K0378" valueTailoring="lexical">ROLLS ROYCE</objectValue>
+            <objectValue valueForm="single" valueAllowed="FAQ15" valueTailoring="lexical">SAFRAN ELECRONICS DEFENSE</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0559" valueTailoring="lexical">SAFRAN FILTRATION SYSTEM</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0228" valueTailoring="lexical">SAFRAN HELICOPTERS ENGINE</objectValue>
+            <objectValue valueForm="single" valueAllowed="F6151" valueTailoring="lexical">SAGEM</objectValue>
+            <objectValue valueForm="single" valueAllowed="D7097" valueTailoring="lexical">STENDER</objectValue>
+            <objectValue valueForm="single" valueAllowed="D6513" valueTailoring="lexical">TELEFUNKEN RACOMS</objectValue>
+            <objectValue valueForm="single" valueAllowed="F9111" valueTailoring="lexical">THALES AVS FRANCE SAS</objectValue>
+            <objectValue valueForm="single" valueAllowed="D2416" valueTailoring="lexical">THALES GERMANY</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0556" valueTailoring="lexical">THALES LAS FRANCE</objectValue>
+            <objectValue valueForm="single" valueAllowed="F0057" valueTailoring="lexical">THALES SIX GTS France</objectValue>
+            <objectValue valueForm="single" valueAllowed="F6101" valueTailoring="lexical">ZODIAC AEROSAFETY SYSTEMS</objectValue>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99043JP">
+            <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmStatus/security/@securityClassification</objectPath>
+            <objectUse>[BRDP-AH-99043JP] For TIGER program, attribute securityClassification must be "01" or "02". (4.2.1 Identification and status section)</objectUse>
+            <objectValue valueForm="single" valueAllowed="01"/>
+            <objectValue valueForm="single" valueAllowed="02"/>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99044JP">
+            <objectPath allowedObjectFlag="0">/dmodule/identAndStatusSection/dmStatus/techStandard/authorityInfoAndTp</objectPath>
+            <objectUse>[BRDP-AH-99044JP] For TIGER program, element authorityInfoAndTp must not be used in the frame of element techStandard. (4.2.1 Identification and status section)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99045JP">
+            <objectPath allowedObjectFlag="0">/dmodule/identAndStatusSection/dmStatus/techStandard/authorityInfo</objectPath>
+            <objectUse>[BRDP-AH-99045JP] For TIGER program, element authorityInfo must not be used in the frame of element techStandard. (4.2.1 Identification and status section)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99046JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/(description|procedure|faultIsolation|faultReporting|crew|illustratedPartsCatalog|maintPlanning)/identAndStatusSection/dmStatus/techStandard[not(techPubBase)]</objectPath>
+            <objectUse>[BRDP-AH-99046JP] For TIGER program, element &lt;techPubBase&gt; is mandatory in the frame of element &lt;techStandard&gt; when used in descriptive, procedural, fault, crew, IPD and schedule Data Modules. (4.2.1 Identification and status section)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99056JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//warning/@vitalWarningFlag</objectPath>
+            <objectUse>[BRDP-AH-99056JP] For TIGER program, the attribute vitalWarningFlag must not be used in the frame of element warning. (4.2.2.13 Warning, Caution and Notes)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99057JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//warning/@warningType</objectPath>
+            <objectUse>[BRDP-AH-99057JP] For TIGER program, the attribute warningType must not be used in the frame of element warning. (4.2.2.13 Warning, Caution and Notes)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99058JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//caution/@cautionType</objectPath>
+            <objectUse>[BRDP-AH-99058JP] For TIGER program, the attribute cautionType must not be used in the frame of element caution. (4.2.2.13 Warning, Caution and Notes)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99059JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//note/@noteType</objectPath>
+            <objectUse>[BRDP-AH-99059JP] For TIGER program, the attribute noteType must not be used in the frame of element note. (4.2.2.13 Warning, Caution and Notes)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99060JP">
+            <objectPath allowedObjectFlag="0">/dmodule/identAndStatusSection/dmStatus/applic//assert[@applicPropertyIdent='model' and @applicPropertyValues!='JP']</objectPath>
+            <objectUse>[BRDP-AH-99060JP] For TIGER program, in the frame of element &lt;assert&gt;, the coding of the model in applicability must be defined with the value of attribute applicPropertyType set to "prodattr", the value of attribute applicPropertyValues set to “JP” (the model identifier code) and the value of attribute applicPropertyIdent set to “model”. (4.4.2 Common Information Repository Data Modules)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99061JP">
+            <objectPath allowedObjectFlag="0">/dmodule//applic//assert[@applicPropertyIdent='version' and @applicPropertyType!='prodattr']</objectPath>
+            <objectUse>[BRDP-AH-99061JP] For TIGER program, in the frame of element &lt;assert&gt;, the coding of the version in applicability must be defined with the value of attribute applicPropertyType set to "prodattr", the value of attribute applicPropertyValues set to the version value and the value of attribute applicPropertyIdent set to “version”. (4.4.2 Common Information Repository Data Modules)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99062JP">
+            <objectPath allowedObjectFlag="0">/dmodule//applic//assert[@applicPropertyIdent='version' and not(@applicPropertyValues=("UHT","HADE","HADF","MKIII-E","MKIII-F","HAP","HAC"))]</objectPath>
+            <objectUse>[BRDP-AH-99062JP] For TIGER program, in the frame of element &lt;assert&gt;, when the value of attribute applicPropertyIdent is “version”, the only possible values for attribute applicPropertyValues are “UHT”, “HADE”, “HADF”, “MKIII-E”, “MKIII-F”, “HAP”, “HAC”. (4.4.2 Common Information Repository Data Modules)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99070JP">
+            <objectPath allowedObjectFlag="0">/dmodule//applic//assert[@applicPropertyValues=('pre','post') and (@applicPropertyType!='condition' or @applicDisplayClass!="MOD")]</objectPath>
+            <objectUse>[BRDP-AH-99070JP] For TIGER program, in the frame of element &lt;assert&gt;, the coding of the configuration pre/post mod in applicability must be defined with the value of attribute applicPropertyType set to "condition", the value of attribute applicDisplayClass set to “MOD”, the value of attribute ”applicPropertyValues set to “pre” or “post” and the value of attribute applicPropertyIdent set to modification number(s) separated by a “|” if multiple. (4.4.2 Common Information Repository Data Modules)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99084JP">
+            <objectPath allowedObjectFlag="0">/dmodule/identAndStatusSection/dmStatus/techStandard/authorityExceptions/retrofit</objectPath>
+            <objectUse>[BRDP-AH-99084JP] For TIGER program, element &lt;retrofit&gt; must not be used. (4.2.1 Identification and status section)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99085JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content//externalPubRef/externalPubRefIdent/externalPubCode/@pubCodingScheme</objectPath>
+            <objectUse>[BRDP-AH-99085JP] For TIGER program, attribute pubCodingScheme must not be used in the context of element &lt;externalPubCode&gt;. (4.2.2.2 Referencing)</objectUse>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/comment.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-44501JP">
+            <objectPath allowedObjectFlag="0">/comment/identAndStatusSection/commentAddress/commentIdent/commentCode/@modelIdentCode!='JP'</objectPath>
+            <objectUse>[BRDP-AH-44501JP] For TIGER program, the model identifier used to identify the comment must be “JP” for whole Tiger, including engine and equipment. (4.4.5 Comment Data Modules)</objectUse>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/crew.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-42718JP">
+            <objectPath allowedObjectFlag="2">/dmodule/content/crew//crewMemberGroup/crewMember/@crewMemberType</objectPath>
+            <objectUse>[BRDP-AH-42718JP] The allowed values for attribute crewMemberType are limited to “cm01”,“cm02”, ”cm03”, ”cm05”, ”cm06” and “cm51” on TIGER program. (4.2.7 Content - Crew Data Module)</objectUse>
+            <objectValue valueForm="single" valueAllowed="cm01" valueTailoring="lexical">All</objectValue>
+            <objectValue valueForm="single" valueAllowed="cm02" valueTailoring="lexical">Pilot</objectValue>
+            <objectValue valueForm="single" valueAllowed="cm03" valueTailoring="lexical">Co-pilot</objectValue>
+            <objectValue valueForm="single" valueAllowed="cm05" valueTailoring="lexical">Engineer</objectValue>
+            <objectValue valueForm="single" valueAllowed="cm06" valueTailoring="lexical">Ground crew</objectValue>
+            <objectValue valueForm="single" valueAllowed="cm51" valueTailoring="lexical">Gunner</objectValue>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/dml.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-44401JP">
+            <objectPath allowedObjectFlag="2">/dml/identAndStatusSection/dmlAddress/dmlIdent/dmlCode/@senderIdent</objectPath>
+            <objectUse>[BRDP-AH-44401JP] The cage code allowed for Data Management Lists codes are limited to Airbus Helicopters Code, as defined in GD-S1000D Annex4 - List of Cage codes supporting S1000D Guidance Document for data exchanged by Airbus Helicopters. (4.4.4 Data Module List (DMRL / CSL))</objectUse>
+            <objectValue valueForm="single" valueAllowed="C0418"/>
+            <objectValue valueForm="single" valueAllowed="274BB"/>
+            <objectValue valueForm="single" valueAllowed="F0210"/>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/fault.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-42596JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/(faultReporting, faultIsolation)//lru/natoStockNumber</objectPath>
+            <objectUse>[BRDP-AH-42596JP] On TIGER program, element &lt;natoStockNumber&gt; must not be used in the frame of element &lt;lru&gt;. (4.3.2 Part Information Data Module)</objectUse>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/ipd.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-25106JP">
+            <objectPath allowedObjectFlag="0">/dmodule[./content/illustratedPartsCatalog and not(./identAndStatusSection/dmAddress/dmIdent/language/@languageIsoCode=('en', 'fr', 'es', 'de'))]</objectPath>
+            <objectUse>[BRDP-AH-25106JP] For Tiger program, Translation of IPC data in French German and Spanish Language is allowed. (2.5.1 IPC - Illustrated Part Catalogue)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-43195JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/illustratedPartsCatalog/catalogSeqNumber/itemSeqNumber//initialProvisioningProject/@fileIdent</objectPath>
+            <objectUse>[BRDP-AH-43195JP] For TIGER program, attribute fileIdent must not be used in the frame of element initialProvisioningProject. (4.3.2 Part Information Data Module)</objectUse>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/proced.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-42161JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/procedure/preliminaryRqmts/reqSupportEquips/supportEquipDescrGroup/supportEquipDescr/natoStockNumber</objectPath>
+            <objectUse>[BRDP-AH-42161JP] For TIGER programs, element natoStockNumber must not be used in the frame of element supportEquipDescr. (4.2.2.9 Preliminary requirements and requirements after job completion)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-42164JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/procedure/preliminaryRqmts/reqSupplies/supplyDescrGroup/supplyDescr/natoStockNumber</objectPath>
+            <objectUse>[BRDP-AH-42164JP] For TIGER programs, element natoStockNumber must not be used in the frame of element supplyDescr. (4.2.2.9 Preliminary requirements and requirements after job completion)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-42167JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/procedure/preliminaryRqmts/reqSpares/spareDescrGroup/spareDescr/natoStockNumber</objectPath>
+            <objectUse>[BRDP-AH-42167JP] For TIGER programs, element natoStockNumber must not be used in the frame of element partDescr. (4.2.2.9 Preliminary requirements and requirements after job completion)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-42323JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/procedure/mainProcedure//proceduralStep/@skillLevelCode</objectPath>
+            <objectUse>[BRDP-AH-42323JP] For TIGER programs, the attribute skillLevelCode must not be used in the frame of element proceduralStep. (4.2.4 Content - Procedural Data Module)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-42324JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/procedure/mainProcedure//proceduralStep/@itemCharacteristic</objectPath>
+            <objectUse>[BRDP-AH-42324JP] For TIGER programs, the attribute itemCharacteristic must not be used in the frame of element proceduralStep. (4.2.4 Content - Procedural Data Module)</objectUse>
+          </structureObjectRule>
+          <structureObjectRule id="BRDP-AH-99086JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/procedure/preliminaryRqmts/productionMaintData/taskDuration</objectPath>
+            <objectUse>[BRDP-AH-99086JP] For TIGER program, the element &lt;taskDuration&gt; must not be used in the context of element &lt;preliminaryRqmts&gt;.  (4.2.2.9 Preliminary requirements and requirements after job completion)</objectUse>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+      <contextRules rulesContext="http://www.s1000d.org/S1000D_4-1/xml_schema_flat/schedul.xsd">
+        <structureObjectRuleGroup>
+          <structureObjectRule id="BRDP-AH-43077JP">
+            <objectPath allowedObjectFlag="0">/dmodule/content/maintPlanning/(taskDefinition|inspectionDefinition)//limit/sampling</objectPath>
+            <objectUse>[BRDP-AH-43077JP] For TIGER program, element &lt;sampling&gt; is not allowed in the frame of element &lt;limit&gt;. (4.3.1 Maintenance Planning Data Module)</objectUse>
+          </structureObjectRule>
+        </structureObjectRuleGroup>
+      </contextRules>
+    </brex>
+  </content>
+</dmodule>

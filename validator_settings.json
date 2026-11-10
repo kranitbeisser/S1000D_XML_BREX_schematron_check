@@ -1,0 +1,13 @@
+{
+    "engines": {
+        "schema":     { "enabled": true,  "severity": "ERROR" },
+        "brex":       { "enabled": true,  "severity": "ERROR" },
+        "schematron": { "enabled": true,  "severity": "ERROR" },
+        "integrity":  {
+            "enabled": true,
+            "severity": "WARNING",
+            "reference_checks": { "enabled": true },
+            "resource_checks": { "enabled": true }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+# Logs & Databases
+logs/*.db
+logs/*.db-wal
+logs/*.db-shm
+logs/*.log
+logs/*.txt
+logs/*.xml
+logs/*.html
+logs/*.csv
+logs/*.json
+!logs/README.md
+test_suite/logs_*/
+.validator_history.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Distribution & Archives
+*.zip
+*.7z
+*.tar.gz
+dist/
+build/
+*.egg-info/
+
+# Project-Specific / Proprietary BREX files (keep only default DMC-S1000D-*.XML in git)
+config/DMC-AHTDGEN-*.xml
+config/DMC-JP-*.xml
+
+# OS / Tools
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
